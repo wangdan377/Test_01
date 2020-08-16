@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7b57a2b3-67f2-454e-b23f-a5249a09b764" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bAVUC4Cc9CXCpu4IqgbPfEEETk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IOT\Test_setttle\lizhi" />
+      <recent name="E:\IOT\Test_setttle\Common" />
+      <recent name="E:\IOT\Test_setttle" />
+      <recent name="E:\IOT\Test_setttle\Common\testcase1" />
+      <recent name="E:\IOT\Test_setttle\testcase" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IOT\Test_setttle" />
+      <recent name="E:\IOT\Test_setttle\testcase" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.4.010_初始函数">
+    <configuration name="查询退款单详情" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Test_setttle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcase1" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testcase1/查询退款单详情.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="11.040_类的方法 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Test_setttle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lizhi" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lizhi/11.040_类的方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="11.040_类的方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Test_setttle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lizhi" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="E:\自动化脚本\Test_setttle2\lizhi\11.040_类的方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="11.050类的继承" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Test_setttle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lizhi" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lizhi/11.050类的继承.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="4.010_初始函数" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Test_setttle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lizhi" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lizhi/4.010_初始函数.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.4.010_初始函数" />
+        <item itemvalue="Python.11.050类的继承" />
+        <item itemvalue="Python.11.040_类的方法 (1)" />
+        <item itemvalue="Python.11.040_类的方法" />
+        <item itemvalue="Python.查询退款单详情" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b57a2b3-67f2-454e-b23f-a5249a09b764" name="Default Changelist" comment="" />
+      <created>1588074898646</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588074898646</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="739" y="275" key="FileChooserDialogImpl" timestamp="1589171058489">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589171058489" />
+    <state width="1259" height="91" key="GridCell.Tab.0.bottom" timestamp="1589448601273">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="91" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589448601273" />
+    <state width="1899" height="201" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589276762540" />
+    <state width="1259" height="91" key="GridCell.Tab.0.center" timestamp="1589448601273">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="91" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589448601273" />
+    <state width="1899" height="201" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589276762540" />
+    <state width="1259" height="91" key="GridCell.Tab.0.left" timestamp="1589448601273">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="91" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589448601273" />
+    <state width="1899" height="201" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589276762540" />
+    <state width="1259" height="91" key="GridCell.Tab.0.right" timestamp="1589448601273">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="91" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589448601273" />
+    <state width="1899" height="201" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589276762540" />
+    <state width="1259" height="113" key="GridCell.Tab.1.bottom" timestamp="1589426799459">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="113" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589426799459" />
+    <state width="1002" height="133" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589269716231" />
+    <state width="1259" height="113" key="GridCell.Tab.1.center" timestamp="1589426799459">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="113" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1589426799459" />
+    <state width="1002" height="133" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589269716231" />
+    <state width="1259" height="113" key="GridCell.Tab.1.left" timestamp="1589426799459">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="113" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1589426799459" />
+    <state width="1002" height="133" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589269716231" />
+    <state width="1259" height="113" key="GridCell.Tab.1.right" timestamp="1589426799459">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="113" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1589426799459" />
+    <state width="1002" height="133" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589269716231" />
+    <state x="225" y="0" key="SettingsEditor" timestamp="1589437825124">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="212" y="6" key="SettingsEditor/0.0.1208.720@0.0.1208.720" timestamp="1589353073617" />
+    <state x="225" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589437825124" />
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589276760234" />
+    <state x="612" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589416344034">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="612" y="236" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1589416344034" />
+    <state x="918" y="361" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589170930411" />
+    <state x="415" y="147" width="672" height="444" key="search.everywhere.popup" timestamp="1589448091305">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="415" y="147" width="672" height="444" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1589448091305" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589182018536" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/testdemo/run.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

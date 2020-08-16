@@ -1,0 +1,1218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 120%; }
+table       { font-size: 100%; }
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="收起"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="详细"
+		}
+	}
+}
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "详细"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "收起"
+        }
+    }
+}
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1 style="font-family: Microsoft YaHei">测试报告</h1>
+<p class='attribute'><strong>测试人员 : </strong> JM</p>
+<p class='attribute'><strong>开始时间 : </strong> 2019-12-31 11:46:56</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:21.173000</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 38，通过 28，失败 10，通过率= 73.68%</p>
+
+<p class='description'>测试用</p>
+</div>
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 73.68% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 10 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 28 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 38 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 16px;">
+    <td>用例集/测试用例</td>
+    <td>总计</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>详细</td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test_case.test_case_sit.TestHttp01</td>
+    <td class="text-center">38</td>
+    <td class="text-center">28</td>
+    <td class="text-center">10</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',38)" class="detail" id='c1'>详细</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_01</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse in" align="left">
+    <pre>
+    
+pt1_1: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjIsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjIzZWI4ODJlLTM1ZGUtNGU3MS1hZjU4LWIyZmJiNTZkNGNlZCIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.Rm1N5ZoxzKwyGi0MOTHLO-oEH9VCeiBU5gl1eSrIJTI', 'curUser': 'jiangman'}
+测试场景：查看资源绑定状态_正常查看_资源绑定本人
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_001
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_02</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
+    <div id='div_pt1_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
+    <div id='div_pt1_2' class="collapse in" align="left">
+    <pre>
+    
+pt1_2: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjMsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjVhYmU4M2FjLTE0NjItNDBlMi1hNWFlLTZlZjkxN2VhNzdlYyIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.JtDUB699Bywx81I7w6vNzdnPG_MBK1uPWk3dqn5SW0o', 'curUser': 'jiangman'}
+测试场景：查看资源绑定状态_有效校验_资源未绑定
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus?authSpace=key_authSpace200_002&amp;resourceKey=ResourceKey200_001
+请求参数:{'authSpace': 'key_authSpace200_002', 'resourceKey': 'ResourceKey200_001'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_03</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_3'>通过</button>
+    <div id='div_pt1_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_3'>通过</button>
+    <div id='div_pt1_3' class="collapse in" align="left">
+    <pre>
+    
+pt1_3: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjMsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImExODkwZDYyLWUxMTktNGVkMy1iNjhhLTMxZjliYjE3YWQzNSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.YVNI28yPxbGrfHP4Jq9f-z934E6RS5Db1IVOyr8ZMdQ', 'curUser': 'jiangman'}
+测试场景：查看资源绑定状态_有效校验_资源绑定非本人
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_002
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_002'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_04</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_4'>通过</button>
+    <div id='div_pt1_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_4'>通过</button>
+    <div id='div_pt1_4' class="collapse in" align="left">
+    <pre>
+    
+pt1_4: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjQsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImJlNzhmNjQ3LTBmYzYtNDczNS04NzlhLTgzNjYzZDVkNTk4MCIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.RtPt9YtS9tOlDPCnE9nBxnAuuFlj1VH6Gh8hIUTdmuw', 'curUser': 'jiangman'}
+测试场景：查看资源绑定状态_有效校验_authSpace不存在
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus?authSpace=key0_authSpace001&amp;resourceKey=ResourceKey200_001
+请求参数:{'authSpace': 'key0_authSpace001', 'resourceKey': 'ResourceKey200_001'}
+接口调用失败:{'utMsg': '权限空间[key0_authSpace001]不存在', 'utCode': 1209, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_05</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_5'>通过</button>
+    <div id='div_pt1_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_5'>通过</button>
+    <div id='div_pt1_5' class="collapse in" align="left">
+    <pre>
+    
+pt1_5: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjQsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImUxYTNlMGI4LThlMjEtNGNiYy1iYmRkLWJlNjM3ZTBiY2UzYyIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.SE7eixQFWZNBTd7uYs3Kmr6cfMzIQxQaOXtLCrjE-oI', 'curUser': 'jiangman'}
+测试场景：查看资源绑定状态_有效校验_resourceKey不存在
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey0_001
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey0_001'}
+接口调用失败:{'utMsg': '权限空间[key_authSpace200_001]中,不存在该资源[ResourceKey0_001]', 'utCode': 1205, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_6' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_06</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_6'>失败</button>
+    <div id='div_ft1_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_6'>失败</button>
+    <div id='div_ft1_6' class="collapse in" align="left">
+    <pre>
+    
+ft1_6: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjUsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjJkYTcwNDZkLWRiOWYtNDI4ZC04NDgxLWI0NTEzYTc3NTEzYyIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.BGl5u9YMdfw7MoVYunE8POc-GTF5Rg2wcS6V1KzalYg', 'curUser': 'jiangman'}
+测试场景：查看资源绑定状态_有效校验_其它开发者有效authSpace
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus?authSpace=key02_authSpace200_001&amp;resourceKey=ResourceKey200_001
+请求参数:{'authSpace': 'key02_authSpace200_001', 'resourceKey': 'ResourceKey200_001'}
+接口调用失败:{'utMsg': '权限空间[key02_authSpace200_001]不存在', 'utCode': 1209, 'utService': 'auth-internet-service'}:
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 200 != 500 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_07</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
+    <div id='div_pt1_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
+    <div id='div_pt1_7' class="collapse in" align="left">
+    <pre>
+    
+pt1_7: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjUsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImQyMTk2MTE0LTAxZGUtNDU0OC05NzcwLTViMzg5YTk2YjEyOSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.6saUs8se6ZxMekyOcbTy53KVrjPv3Kwd544Nu1A9iSg', 'curUser': 'jiangman'}
+测试场景：查看资源绑定状态_格式、边界校验
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getResourceBindStatus?authSpace=key_authSpace200_1%40%231&amp;resourceKey=ResourceKey200_001
+请求参数:{'authSpace': 'key_authSpace200_1@#1', 'resourceKey': 'ResourceKey200_001'}
+接口调用失败:{'utMsg': 'authSpace仅支持4-32个字符，允许大小写字母数字下划线！', 'utCode': 1114, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_08</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_8'>通过</button>
+    <div id='div_pt1_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_8'>通过</button>
+    <div id='div_pt1_8' class="collapse in" align="left">
+    <pre>
+    
+pt1_8: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjYsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjhmY2NiMzU3LWUxMjAtNGU1YS05ODRiLTVhYTczNjZlNWY4NSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.f1VIq33iw4GfxKMhdf3m1sgL5pefn00jqp64kHzGq10', 'curUser': 'jiangman'}
+测试场景：查看分享记录_正常分享
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_001&amp;userKey=user_share
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'userKey': 'user_share'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_09</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_9'>通过</button>
+    <div id='div_pt1_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_9'>通过</button>
+    <div id='div_pt1_9' class="collapse in" align="left">
+    <pre>
+    
+pt1_9: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjcsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImYwYTQ1NDFjLTJlNmQtNGFmMS1iMWJjLTVmNWJlNDY1ZTIwMiIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.-O0SrFNEtIJfI6KzopH824qT1nd89KZu9vKjNv9vpDU', 'curUser': 'jiangman'}
+测试场景：查看分享记录_有效校验_authSpace无效_不存在
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords?authSpace=key0_authSpace001&amp;resourceKey=ResourceKey200_001&amp;userKey=user_share
+请求参数:{'authSpace': 'key0_authSpace001', 'resourceKey': 'ResourceKey200_001', 'userKey': 'user_share'}
+接口调用失败:{'utMsg': '权限空间[key0_authSpace001]不存在', 'utCode': 1209, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_10</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_10'>通过</button>
+    <div id='div_pt1_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_10'>通过</button>
+    <div id='div_pt1_10' class="collapse in" align="left">
+    <pre>
+    
+pt1_10: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjcsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjIzM2RlMzQzLWFjZDktNDMwOC04NGY5LTI5YjUzMGQ5MjY3NSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.7FZJg2g-hwBSqZAFx7-Cld7-B6-1yg6XXoqdBWUKAa0', 'curUser': 'jiangman'}
+测试场景：查看分享记录_有效校验_authSpace无效_不可用
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords?authSpace=key02_authSpace200_001&amp;resourceKey=ResourceKey200_001&amp;userKey=user_share
+请求参数:{'authSpace': 'key02_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'userKey': 'user_share'}
+接口调用失败:{'utMsg': '权限空间[key02_authSpace200_001]不存在', 'utCode': 1209, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_11</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_11'>通过</button>
+    <div id='div_pt1_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_11'>通过</button>
+    <div id='div_pt1_11' class="collapse in" align="left">
+    <pre>
+    
+pt1_11: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjgsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjIwNzk5ZWE5LWU4ZmYtNDJjMy1iNTgzLTY0ZGM3YjI1M2MyMSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.1L4KUHucwjg3TA04Zn-EcKice28q4GPe-Jf0lfU4iC8', 'curUser': 'jiangman'}
+测试场景：查看分享记录_有效校验_resourceKey无效_不存在
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey0_001&amp;userKey=user_share
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey0_001', 'userKey': 'user_share'}
+接口调用失败:{'utMsg': '权限空间[key_authSpace200_001]中,不存在该资源[ResourceKey0_001]', 'utCode': 1205, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_12' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_12</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_12'>失败</button>
+    <div id='div_ft1_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_12'>失败</button>
+    <div id='div_ft1_12' class="collapse in" align="left">
+    <pre>
+    
+ft1_12: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjgsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjMxOTAzYTJkLTA3NTQtNDBmZC05NDM3LWI1OTcyNjc1NmEyYyIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.GJbjCLIdDd4MKH-BTcmoVTFNr094v08uU8ApXHIaFt0', 'curUser': 'jiangman'}
+测试场景：查看分享记录_有效校验_resourceKey无效_未绑定
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords?authSpace=key_authSpace200_002&amp;resourceKey=ResourceKey200_001&amp;userKey=user_share
+请求参数:{'authSpace': 'key_authSpace200_002', 'resourceKey': 'ResourceKey200_001', 'userKey': 'user_share'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 500 != 200 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_13' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_13</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_13'>失败</button>
+    <div id='div_ft1_13' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_13' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_13'>失败</button>
+    <div id='div_ft1_13' class="collapse in" align="left">
+    <pre>
+    
+ft1_13: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjksInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6Ijg1ZWRkZDgxLWU5NGItNGZlYS1iNGE4LTJmMjg0MjEyODEzMyIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.v7VmJ_VzdFg9iaaU2-lT2uIGEDhaBo_9aO-RmscLWBU', 'curUser': 'jiangman'}
+测试场景：查看分享记录_有效校验_userKey无效_未绑定此用户
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_002&amp;userKey=userKey_003
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_002', 'userKey': 'userKey_003'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 500 != 200 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_14' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_14</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_14' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_14'>失败</button>
+    <div id='div_ft1_14' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_14' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_14'>失败</button>
+    <div id='div_ft1_14' class="collapse in" align="left">
+    <pre>
+    
+ft1_14: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMjksInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjY4NTRhMWM0LThmMzQtNGNiYS05MDI4LWI3MDJiNGRkOTBlZSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.i1hzAwRGgxPAjB9sDRNJi02c_m9eQBSqgoCOoYFLt-k', 'curUser': 'jiangman'}
+测试场景：查看分享记录_有效校验_必填校验_userKey为空
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_001&amp;userKey=
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'userKey': ''}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 500 != 200 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_15' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_15</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_15' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_15'>失败</button>
+    <div id='div_ft1_15' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_15' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_15'>失败</button>
+    <div id='div_ft1_15' class="collapse in" align="left">
+    <pre>
+    
+ft1_15: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzAsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjkwMjM4Yjg2LTRmOWYtNGZlNi05NjlhLWE2M2MxMmU4YzAyYiIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.6POi4MXNmxQoucgDXLfF9Y-rAFd1B8GBKqhuzZITm08', 'curUser': 'jiangman'}
+测试场景：查看分享记录_有效校验_非本人拥有资源
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_002&amp;userKey=user_used01
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_002', 'userKey': 'user_used01'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 500 != 200 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_16' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_16</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_16' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_16'>通过</button>
+    <div id='div_pt1_16' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_16' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_16'>通过</button>
+    <div id='div_pt1_16' class="collapse in" align="left">
+    <pre>
+    
+pt1_16: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzAsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImNlYTM4YjExLTM0ZmItNGIyNS1hNTkxLTBlN2JiZTE4NDE0YSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.6wwHKxxC1Sygdaate2DCxXwn2nurT_l4hRihLB0gf9I', 'curUser': 'jiangman'}
+测试场景：查看分享记录_有效校验_格式、边界校验
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/listShareRecords?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_002&amp;userKey=%21%40%23
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_002', 'userKey': '!@#'}
+接口调用失败:{'utMsg': 'userKey仅支持1-32个字符，允许大小写字母数字下划线！', 'utCode': 1106, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_17' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_17</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_17' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_17'>通过</button>
+    <div id='div_pt1_17' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_17' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_17'>通过</button>
+    <div id='div_pt1_17' class="collapse in" align="left">
+    <pre>
+    
+pt1_17: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzEsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImQ4MWFmODE4LTc5OTctNGQ3OC1hYmVmLWU1YjRkZjhiNmNiZSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.UT4ih_gXnziF6_xEGoBzAzh_GJImWPP6Ic0SFajEE6A', 'curUser': 'jiangman'}
+测试场景：查找当前用户被授权的资源列表_正常获取[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources?authSpace=key_authSpace200_001&amp;tagKey=tagKey0_003&amp;tagValue=tagValue0_001&amp;valid=true
+请求参数:{'authSpace': 'key_authSpace200_001', 'tagKey': 'tagKey0_003', 'tagValue': 'tagValue0_001', 'valid': 'true'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_18' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_18</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_18' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_18'>通过</button>
+    <div id='div_pt1_18' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_18' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_18'>通过</button>
+    <div id='div_pt1_18' class="collapse in" align="left">
+    <pre>
+    
+pt1_18: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzIsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImM2MzJmNWU1LTA1MDYtNGU3YS05Y2NmLTk1NDgyMDhhN2U2ZiIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.4I61K60_S5gq71sfBaNcvgBJsiFE-BO07x7LF1PZpm0', 'curUser': 'jiangman'}
+测试场景：查找当前用户被授权的资源列表_authSpace无效[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources?authSpace=key0_authSpace001&amp;tagKey=tagKey0_003&amp;tagValue=tagValue0_001&amp;valid=true
+请求参数:{'authSpace': 'key0_authSpace001', 'tagKey': 'tagKey0_003', 'tagValue': 'tagValue0_001', 'valid': 'true'}
+接口调用失败:{'utMsg': '权限空间[key0_authSpace001]不存在', 'utCode': 1209, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_19' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_19</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_19' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_19'>通过</button>
+    <div id='div_pt1_19' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_19' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_19'>通过</button>
+    <div id='div_pt1_19' class="collapse in" align="left">
+    <pre>
+    
+pt1_19: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzIsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjE1NDA2NDU5LTFkMGQtNDlkNi1hYzM5LWVlZTkzMGI4NzEwMiIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.S_VKAaZEoVCIxyRb872yZWSsgqEEBxXcx1Jn1AHkoiA', 'curUser': 'jiangman'}
+测试场景：查找当前用户被授权的资源列表_authSpace未授权本人[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources?authSpace=key02_authSpace200_001&amp;tagKey=tagKey0_003&amp;tagValue=tagValue0_001&amp;valid=true
+请求参数:{'authSpace': 'key02_authSpace200_001', 'tagKey': 'tagKey0_003', 'tagValue': 'tagValue0_001', 'valid': 'true'}
+接口调用失败:{'utMsg': '权限空间[key02_authSpace200_001]不存在', 'utCode': 1209, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_20' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_20</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_20' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_20'>失败</button>
+    <div id='div_ft1_20' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_20' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_20'>失败</button>
+    <div id='div_ft1_20' class="collapse in" align="left">
+    <pre>
+    
+ft1_20: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzMsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjY4YjA5MGI0LTFhNTQtNDk0MS1iZTg4LTJiOGU5ZDkzNTY1OSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.cyOlzH1Kc-FI6tozqsul0Dtr7ds808aWI2Fzxeaj0vM', 'curUser': 'jiangman'}
+测试场景：查找当前用户被授权的资源列表_有效校验_tagKey无效[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources?authSpace=key_authSpace200_001&amp;tagKey=tagKey00001&amp;tagValue=tagValue_0001&amp;valid=true
+请求参数:{'authSpace': 'key_authSpace200_001', 'tagKey': 'tagKey00001', 'tagValue': 'tagValue_0001', 'valid': 'true'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 500 != 200 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_21' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_21</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_21' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_21'>失败</button>
+    <div id='div_ft1_21' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_21' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_21'>失败</button>
+    <div id='div_ft1_21' class="collapse in" align="left">
+    <pre>
+    
+ft1_21: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzMsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjhlMzAzZGQ1LTBiOTEtNGZiYS1iODRhLWU0M2FiZmUzMDMzYiIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.fvBuam837uajqHTdKUztoTGLxaHuQ81SeTbjjmln2jE', 'curUser': 'jiangman'}
+测试场景：查找当前用户被授权的资源列表_有效校验_tagValue无效[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources?authSpace=key_authSpace200_001&amp;tagKey=tagKey0_003&amp;tagValue=tagValue0_0001&amp;valid=true
+请求参数:{'authSpace': 'key_authSpace200_001', 'tagKey': 'tagKey0_003', 'tagValue': 'tagValue0_0001', 'valid': 'true'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 500 != 200 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_22' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_22</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_22' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_22'>通过</button>
+    <div id='div_pt1_22' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_22' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_22'>通过</button>
+    <div id='div_pt1_22' class="collapse in" align="left">
+    <pre>
+    
+pt1_22: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzQsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6Ijk0OTdlOTcxLTY4NzAtNGIzZC1iNGFkLWU3YzE0ZWNiZWY5MiIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.uH7-BVZtGKsNpId1O4cbr75ACDwTaX77tPRS7AMzLso', 'curUser': 'jiangman'}
+测试场景：查找当前用户被授权的资源列表_有效校验_valid=false[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources?authSpace=key_authSpace200_001&amp;tagKey=tagKey0_003&amp;tagValue=tagValue0_001&amp;valid=false
+请求参数:{'authSpace': 'key_authSpace200_001', 'tagKey': 'tagKey0_003', 'tagValue': 'tagValue0_001', 'valid': 'false'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_23' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_23</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_23' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_23'>通过</button>
+    <div id='div_pt1_23' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_23' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_23'>通过</button>
+    <div id='div_pt1_23' class="collapse in" align="left">
+    <pre>
+    
+pt1_23: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzQsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImI3YWNjY2Y3LWVmYTQtNDJhMC1hNDhmLWQ5MDA4MmJiYTU4OCIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.K97UttISYUNNdx_d7_uyf0vZJIlLKxw7dd41M_2sfPQ', 'curUser': 'jiangman'}
+测试场景：查找当前用户被授权的资源列表_有效校验_valid=null[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources?authSpace=key_authSpace200_001&amp;tagKey=tagKey0_003&amp;tagValue=tagValue0_001
+请求参数:{'authSpace': 'key_authSpace200_001', 'tagKey': 'tagKey0_003', 'tagValue': 'tagValue0_001'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_24' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_24</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_24' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_24'>通过</button>
+    <div id='div_pt1_24' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_24' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_24'>通过</button>
+    <div id='div_pt1_24' class="collapse in" align="left">
+    <pre>
+    
+pt1_24: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzUsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjI2NjMxOTEyLWYyOTAtNDcxOS04ZTc4LTA5ZjZkZWE1ZjJkNiIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.6dPxChMopZg5SE71D1QqlsF4h-FxGDl-2MCRYypa5fs', 'curUser': 'jiangman'}
+测试场景：查找当前用户被授权的资源列表_格式、边界校验
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getAuthorizedResources?authSpace=key_authSpace2%21%40%231&amp;tagKey=tagKey0_003&amp;tagValue=tagValue0_001
+请求参数:{'authSpace': 'key_authSpace2!@#1', 'tagKey': 'tagKey0_003', 'tagValue': 'tagValue0_001'}
+接口调用失败:{'utMsg': 'authSpace仅支持4-32个字符，允许大小写字母数字下划线！', 'utCode': 1114, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_25' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_25</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_25' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_25'>通过</button>
+    <div id='div_pt1_25' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_25' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_25'>通过</button>
+    <div id='div_pt1_25' class="collapse in" align="left">
+    <pre>
+    
+pt1_25: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/checkAuth
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzYsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImYzYzVmMmViLTlkZjItNDMxNC1iNGQ3LTRmZWY5OGVlNWQ3NyIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.2i_Q0aFq6G3sqAexbhhaBFq9tm4CaOSbh8kCszz44LQ', 'curUser': 'jiangman'}
+测试场景：查询指定资源的指定权限是否可用_正常获取[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/checkAuth?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_001&amp;functionName=functionNameList0_001
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionName': 'functionNameList0_001'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_26' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_26</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_26' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_26'>通过</button>
+    <div id='div_pt1_26' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_26' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_26'>通过</button>
+    <div id='div_pt1_26' class="collapse in" align="left">
+    <pre>
+    
+pt1_26: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/checkAuth
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzYsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6Ijk1NGE0MDdiLTk0MDQtNDRlZC04YWEyLTNmNGVkOGFmYTM5NiIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.lZtxLdkAC9z4JCrP7_sVJwsC0ghvrGy5Y4632uBvl6M', 'curUser': 'jiangman'}
+测试场景：查询指定资源的指定权限是否可用_有效校验_authSpace不存在[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/checkAuth?authSpace=key0_authSpace001&amp;resourceKey=ResourceKey_0001&amp;functionName=functionNameList0_001
+请求参数:{'authSpace': 'key0_authSpace001', 'resourceKey': 'ResourceKey_0001', 'functionName': 'functionNameList0_001'}
+接口调用失败:{'utMsg': '权限空间[key0_authSpace001]不存在', 'utCode': 1209, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_27' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_27</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_27' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_27'>通过</button>
+    <div id='div_pt1_27' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_27' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_27'>通过</button>
+    <div id='div_pt1_27' class="collapse in" align="left">
+    <pre>
+    
+pt1_27: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/checkAuth
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzcsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjNmMDY3YzdkLTY2NDktNDJkZS1iNTA5LWMwMjhkNTYzNjM3OSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.4lE19blDHMLTLBL-uy8fX1U8LIdgLNEjk9_JhjcIJJU', 'curUser': 'jiangman'}
+测试场景：查询指定资源的指定权限是否可用_有效校验_resourceKey不存在[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/checkAuth?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey0_0001&amp;functionName=functionNameList0_001
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey0_0001', 'functionName': 'functionNameList0_001'}
+接口调用失败:{'utMsg': '资源不存在！', 'utCode': 1205, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_28' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_28</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_28' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_28'>失败</button>
+    <div id='div_ft1_28' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_28' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_28'>失败</button>
+    <div id='div_ft1_28' class="collapse in" align="left">
+    <pre>
+    
+ft1_28: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/checkAuth
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzcsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjFkNTg4NmIwLWNlNzAtNDAwMC1hMTk4LTU3ZjllYjVhZmJlZiIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.jGrcJeaj_P3hXChzU-d7c4HN5Gi0QPlYk8z2AD7eifk', 'curUser': 'jiangman'}
+测试场景：查询指定资源的指定权限是否可用_有效校验_functionName未绑定[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/checkAuth?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_001&amp;functionName=functionName0_00
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionName': 'functionName0_00'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 500 != 200 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_29' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_29</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_29' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_29'>失败</button>
+    <div id='div_ft1_29' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_29' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_29'>失败</button>
+    <div id='div_ft1_29' class="collapse in" align="left">
+    <pre>
+    
+ft1_29: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/checkAuth
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzgsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImYyZDhiZWY3LTIxMTYtNGJjNi1iYmE5LWZhYmQ5ODVmNzYzNSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.eIa_vkarvut2lKwxRWUMj1CJEt6okmdXnUiijEoPGeA', 'curUser': 'jiangman'}
+测试场景：查询指定资源的指定权限是否可用_有效校验_functionName非本人权限[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/checkAuth?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_001&amp;functionName=functionName0_003
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionName': 'functionName0_003'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 500 != 200 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_30' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_30</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_30' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_30'>通过</button>
+    <div id='div_pt1_30' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_30' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_30'>通过</button>
+    <div id='div_pt1_30' class="collapse in" align="left">
+    <pre>
+    
+pt1_30: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/checkAuth
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzgsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjVhNjc3YjkzLTA2NWUtNDRjZC05NDVjLWZlYzgzYjk2MGFlZCIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.mRQ3FFeSquQ-zADez5TajF9ZQVSKfHfZQFLGNIf19wY', 'curUser': 'jiangman'}
+测试场景：查询指定资源的指定权限是否可用_格式、边界校验
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/checkAuth?authSpace=key01_a%21%40%23%21%40%231&amp;resourceKey=ResourceKey200_001&amp;functionName=functionNameList0_001
+请求参数:{'authSpace': 'key01_a!@#!@#1', 'resourceKey': 'ResourceKey200_001', 'functionName': 'functionNameList0_001'}
+接口调用失败:{'utMsg': 'authSpace仅支持4-32个字符，允许大小写字母数字下划线！', 'utCode': 1114, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_31' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_31</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_31' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_31'>通过</button>
+    <div id='div_pt1_31' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_31' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_31'>通过</button>
+    <div id='div_pt1_31' class="collapse in" align="left">
+    <pre>
+    
+pt1_31: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwMzksInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImE5NTdkMjEyLTNmNzgtNGEzNy1iNjlmLThmNjdhZjMwZDQ1YyIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.tAlX2HpsP9JZzd945zbXOL0Oc5BuKoUHkWGzlwpjHsg', 'curUser': 'jiangman'}
+测试场景：查找当前用户指定资源的功能清单_正常获取[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_001&amp;valid=true
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'valid': 'true'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_32' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_32</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_32' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_32'>通过</button>
+    <div id='div_pt1_32' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_32' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_32'>通过</button>
+    <div id='div_pt1_32' class="collapse in" align="left">
+    <pre>
+    
+pt1_32: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwNDAsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjAxNGE4YmU2LTA0ZGItNDgxZC1hZjZhLWU4OTQ3NmZmYTc4MCIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.8XgQmmRZW04jTYqkodPmoXDMOpEJtBgf20uuKEsIRlY', 'curUser': 'jiangman'}
+测试场景：查找当前用户指定资源的功能清单_有效校验_authSpace不存在[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource?authSpace=key0_authSpace001&amp;resourceKey=ResourceKey_0001&amp;valid=true
+请求参数:{'authSpace': 'key0_authSpace001', 'resourceKey': 'ResourceKey_0001', 'valid': 'true'}
+接口调用失败:{'utMsg': '权限空间[key0_authSpace001]不存在', 'utCode': 1209, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_33' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_33</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_33' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_33'>通过</button>
+    <div id='div_pt1_33' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_33' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_33'>通过</button>
+    <div id='div_pt1_33' class="collapse in" align="left">
+    <pre>
+    
+pt1_33: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwNDAsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjRlZmU2Y2Y4LTJkY2ItNGEyNi1hYjAzLTk0OTY3M2NhYTk0YSIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.56qt6YVL5DXUIDka8kYPNy6-ClSi28N5zJdlglYIybo', 'curUser': 'jiangman'}
+测试场景：查找当前用户指定资源的功能清单_有效校验_resourceKey不存在[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey0_0001&amp;valid=true
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey0_0001', 'valid': 'true'}
+接口调用失败:{'utMsg': '权限空间[key_authSpace200_001]中,不存在该资源[ResourceKey0_0001]', 'utCode': 1205, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_34' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_34</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_34' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_34'>失败</button>
+    <div id='div_ft1_34' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_34' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_34'>失败</button>
+    <div id='div_ft1_34' class="collapse in" align="left">
+    <pre>
+    
+ft1_34: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwNDEsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImVmZWIxN2Y3LTQwOGQtNDY5MC04OGVkLWU3N2NiOGMxMjVmNiIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.Y_s5-XsPwFlzQJmfLFE620ap2vbOuHyWetlCXzVz80U', 'curUser': 'jiangman'}
+测试场景：查找当前用户指定资源的功能清单_有效校验_resourceKey非本人拥有功能[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_002&amp;valid=true
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_002', 'valid': 'true'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 500 != 200 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_35' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_35</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_35' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_35'>通过</button>
+    <div id='div_pt1_35' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_35' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_35'>通过</button>
+    <div id='div_pt1_35' class="collapse in" align="left">
+    <pre>
+    
+pt1_35: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwNDEsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6ImRkMWM4YWVmLTlhZTEtNGQ2My05NzcwLWRjN2VkNzNjZGI0OCIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.38yQfInAnhFJCk-jaBaOh90bnkwNraMTN9Yqjvf7FjQ', 'curUser': 'jiangman'}
+测试场景：查找当前用户指定资源的功能清单_有效校验_valid=false[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_001&amp;valid=false
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'valid': 'false'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_36' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_36</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_36' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_36'>通过</button>
+    <div id='div_pt1_36' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_36' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_36'>通过</button>
+    <div id='div_pt1_36' class="collapse in" align="left">
+    <pre>
+    
+pt1_36: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwNDIsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjYwNjQwMjk5LWI1Y2QtNGY1NC05MDg1LTk1OGU4ZDVkMzNkNCIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.lA9TygYKTztzXibWmt3G6dURG2udS8Gh0Wr3NZopYyE', 'curUser': 'jiangman'}
+测试场景：查找当前用户指定资源的功能清单_有效校验_valid=null[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource?authSpace=key_authSpace200_001&amp;resourceKey=ResourceKey200_001
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001'}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_37' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_37</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_37' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_37'>通过</button>
+    <div id='div_pt1_37' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_37' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_37'>通过</button>
+    <div id='div_pt1_37' class="collapse in" align="left">
+    <pre>
+    
+pt1_37: ----------------------------------------
+https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource
+{'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODAzNTYwNDMsInVzZXJfbmFtZSI6ImppYW5nbWFuIiwiYXV0aG9yaXRpZXMiOlsicGxhdGZvcm1fYXBwX2FkZEFwcCIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aEdyb3VwMk1lbnUiLCJwbGF0Zm9ybV9hcHBfZGVsZXRlTWVudSIsImF1dGhuZXRfZGV2ZWxvcGVyIiwiYXV0aG5ldF9nZXRBdXRoc0J5VXNlciIsInBsYXRmb3JtX2FwcF9wYWdlQWxsQXV0aG9yaXRpZXMiLCJwbGF0Zm9ybV9hcHBfY2hpbGRBY2NvdW50TWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jcmVhdGVDaGlsZEFjY291bnQiLCJwbGF0Zm9ybV9hcHBfbWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF9jaGlsZFVzZXJzIiwiYXV0aG5ldF9yZWdpc3RlclJlc291cmNlIiwiYXV0aG5ldF9uZXdBdXRoU3BhY2VLZXlQYWlyIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoMlVzZXIiLCJhdXRobmV0X2dldEF1dGhvcml0eUZpbGUiLCJwbGF0Zm9ybV9hcHBfZ2V0TWVudSIsInBsYXRmb3JtX3VzZXJfY2hlY2tBbmRSZWdpc3RlciIsImF1dGhuZXRfZ2V0UmVzb3VyY2VQdWJLZXkiLCJwbGF0Zm9ybV9hcHBfZ2V0QXBwIiwicGxhdGZvcm1fYXBwX2JpbmRBdXRoR3JvdXAyVXNlciIsInBsYXRmb3JtX2FwcF9lbXBvd2VyTWFuYWdlbWVudCIsInBsYXRmb3JtX2FwcF91cGRhdGVBcHAiLCJwbGF0Zm9ybV9nZXRUb2tlbl9kZXZlbG9wZXIiLCJwbGF0Zm9ybV9hcHBfYWxsQXV0aG9yaXR5R3JvdXBzIiwiYXV0aG5ldF9nZXRSZXNvdXJjZVRhZ3MiLCJwbGF0Zm9ybV9hcHBfYmluZEF1dGgyTWVudSIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hdXRob3JpdHlNYW5hZ2VtZW50IiwiYXV0aG5ldF9jcmVhdGVBdXRoU3BhY2UiLCJwbGF0Zm9ybV9hcHBfYWRkQXV0aG9yaXR5IiwicGxhdGZvcm1fYXBwX3VwZGF0ZUF1dGhvcml0eUdyb3VwIiwicGxhdGZvcm1fZGV2ZWxvcGVyIiwiYXV0aG5ldF9xdWVyeUF1dGhTcGFjZSIsInBsYXRmb3JtX2FwcF9hZGRBdXRob3JpdHlHcm91cCIsInBsYXRmb3JtX2FwcF9hbGxBcHBzIiwicGxhdGZvcm1fdG9rZW5Db252ZXJ0X2RldmVsb3BlciIsInBsYXRmb3JtX2FwcF9kZWxldGVBdXRob3JpdHkiLCJhdXRobmV0X2dldFVzZXJQcml2YXRlS2V5IiwicGxhdGZvcm1fYXBwX2FkZE1lbnUiLCJwbGF0Zm9ybV9hcHBfbWVudU1hbmFnZW1lbnQiLCJwbGF0Zm9ybV91c2VyX2dldFRva2VuIiwiYXV0aG5ldF9zZXRSZXNvdXJjZVRhZ3MiLCJhdXRobmV0X2dldFVzZXJzQnlSZXNvdXJjZUtleSIsImF1dGhuZXRfdW5iaW5kUmVzb3VyY2VUb1VzZXIiLCJhdXRobmV0X2JhdGNoR2VuZXJhdGVSZXNvdXJjZVB1YktleSIsInBsYXRmb3JtX2FwcF9hbGxBdXRob3JpdGllcyIsInBsYXRmb3JtX3VzZXJfYmF0Y2hSZWdpc3RlciIsInBsYXRmb3JtX2FwcF9hbGxNZW51cyIsImF1dGhuZXRfZ2V0QXV0aFNwYWNlS2V5UGFpciIsInBsYXRmb3JtX2FwcF9iaW5kQXV0aDJBdXRoR3JvdXAiLCJwbGF0Zm9ybV9hcHBfYXBwTGlzdCIsImF1dGhuZXRfZ2V0UmVzb3VyY2VzQnlUYWdzIiwiYXV0aG5ldF9iaW5kUmVzb3VyY2VUb1VzZXIiLCJwbGF0Zm9ybV9hcHBfYXV0aG9yaXR5R3JvdXBNYW5hZ2VtZW50IiwicGxhdGZvcm1fYXBwX2NoYW5nZUFwcFN0YXR1cyIsInBsYXRmb3JtX2FwcF91cGRhdGVNZW51Il0sImp0aSI6IjAxODMxM2MzLTZkMjgtNDQ5Mi04ZWQ3LTE4ZGZhZDc3YWM5NCIsImNsaWVudF9pZCI6InNzby1nYXRld2F5Iiwic2NvcGUiOlsicmVhZCJdfQ.hvpwmhAnHjCRPSbNFUS17vkFqFn812BTGs4cx-ScwFo', 'curUser': 'jiangman'}
+测试场景：查找当前用户指定资源的功能清单_格式、边界校验
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/getFunctionsOfResource?authSpace=key0_authSpac%EF%BC%81%40%23&amp;resourceKey=ResourceKey200_001&amp;valid=
+请求参数:{'authSpace': 'key0_authSpac！@#', 'resourceKey': 'ResourceKey200_001', 'valid': ''}
+接口调用失败:{'utMsg': 'authSpace仅支持4-32个字符，允许大小写字母数字下划线！', 'utCode': 1114, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_38' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_002</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_38' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_38'>通过</button>
+    <div id='div_pt1_38' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_38' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_38'>通过</button>
+    <div id='div_pt1_38' class="collapse in" align="left">
+    <pre>
+    
+pt1_38: ----------------------------------------
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>总计</td>
+    <td>38</td>
+    <td>28</td>
+    <td>10</td>
+    <td>0</td>
+    <td>通过率：73.68%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+    'url':'https://oauthuat.utcook.com/uaa/oauth/login',
+    'username':'iot_owner_test',
+    'password':'Ut123456',
+    'grant_type':'password',
+    'scope':'read',
+    'exepect_result':"ok",
+    'status_code':200
+}

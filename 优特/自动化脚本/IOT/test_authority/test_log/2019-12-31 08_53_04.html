@@ -1,0 +1,1517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 120%; }
+table       { font-size: 100%; }
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="收起"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="详细"
+		}
+	}
+}
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "详细"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "收起"
+        }
+    }
+}
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1 style="font-family: Microsoft YaHei">测试报告</h1>
+<p class='attribute'><strong>测试人员 : </strong> JM</p>
+<p class='attribute'><strong>开始时间 : </strong> 2019-12-31 08:53:04</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:10:26.110000</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 29，通过 18，失败 1，错误 10，通过率= 62.07%</p>
+
+<p class='description'>测试用</p>
+</div>
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 62.07% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 1 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 18 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 29 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 16px;">
+    <td>用例集/测试用例</td>
+    <td>总计</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>详细</td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test_case.test_case_sit.TestHttp01</td>
+    <td class="text-center">29</td>
+    <td class="text-center">18</td>
+    <td class="text-center">1</td>
+    <td class="text-center">10</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',29)" class="detail" id='c1'>详细</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_01</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse in" align="left">
+    <pre>
+    
+pt1_1: ----------------------------------------
+测试场景：限时授权_正常分享[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_02</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
+    <div id='div_pt1_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
+    <div id='div_pt1_2' class="collapse in" align="left">
+    <pre>
+    
+pt1_2: ----------------------------------------
+测试场景：限时授权_有效校验_authSpace不存在[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key0_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用失败:{'utMsg': '权限空间[key0_authSpace200_001]不存在', 'utCode': 1209, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_03</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_3'>通过</button>
+    <div id='div_pt1_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_3'>通过</button>
+    <div id='div_pt1_3' class="collapse in" align="left">
+    <pre>
+    
+pt1_3: ----------------------------------------
+测试场景：限时授权_有效校验_resourceKey不存在[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey0_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用失败:{'utMsg': '权限空间[key_authSpace200_001]中,不存在该资源[ResourceKey0_001]', 'utCode': 1205, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_04</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_4'>通过</button>
+    <div id='div_pt1_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_4'>通过</button>
+    <div id='div_pt1_4' class="collapse in" align="left">
+    <pre>
+    
+pt1_4: ----------------------------------------
+测试场景：限时授权_有效校验_functionNameList重复[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_003', 'functionNameList0_003', 'functionNameList0_004'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_05</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_5'>错误</button>
+    <div id='div_ft1_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_5'>错误</button>
+    <div id='div_ft1_5' class="collapse in" align="left">
+    <pre>
+    
+ft1_5: ----------------------------------------
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Program Files\python\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Program Files\python\lib\ssl.py", line 1052, in recv_into
+    return self.read(nbytes, buffer)
+  File "D:\Program Files\python\lib\ssl.py", line 911, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\retry.py", line 400, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Program Files\python\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Program Files\python\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Program Files\python\lib\ssl.py", line 1052, in recv_into
+    return self.read(nbytes, buffer)
+  File "D:\Program Files\python\lib\ssl.py", line 911, in read
+    return self._sslobj.read(len, buffer)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 29, in test_001
+    res = http_requests().http_requests(a["http_url"], a["http_mthod"], a["http_param"])
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 47, in http_requests
+    res = requests.post(url,json=http_param,headers = http_header)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_06</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_6'>错误</button>
+    <div id='div_ft1_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_6'>错误</button>
+    <div id='div_ft1_6' class="collapse in" align="left">
+    <pre>
+    
+ft1_6: ----------------------------------------
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\retry.py", line 400, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Program Files\python\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 29, in test_001
+    res = http_requests().http_requests(a["http_url"], a["http_mthod"], a["http_param"])
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 47, in http_requests
+    res = requests.post(url,json=http_param,headers = http_header)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_07</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
+    <div id='div_pt1_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
+    <div id='div_pt1_7' class="collapse in" align="left">
+    <pre>
+    
+pt1_7: ----------------------------------------
+测试场景：限时授权_有效校验_不同userKey[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_02', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_08</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_8'>通过</button>
+    <div id='div_pt1_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_8'>通过</button>
+    <div id='div_pt1_8' class="collapse in" align="left">
+    <pre>
+    
+pt1_8: ----------------------------------------
+测试场景：限时授权_有效校验_userKey分享给开发者（资源创建者）[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_001'], 'userKey': 'jiangman', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_09</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_9'>通过</button>
+    <div id='div_pt1_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_9'>通过</button>
+    <div id='div_pt1_9' class="collapse in" align="left">
+    <pre>
+    
+pt1_9: ----------------------------------------
+测试场景：限时授权_有效校验_userKey分享给开发者（非资源创建者）[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_001'], 'userKey': 'platform_admin', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_10' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_10</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_10'>错误</button>
+    <div id='div_ft1_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_10'>错误</button>
+    <div id='div_ft1_10' class="collapse in" align="left">
+    <pre>
+    
+ft1_10: ----------------------------------------
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Program Files\python\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Program Files\python\lib\ssl.py", line 1052, in recv_into
+    return self.read(nbytes, buffer)
+  File "D:\Program Files\python\lib\ssl.py", line 911, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\retry.py", line 400, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Program Files\python\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Program Files\python\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Program Files\python\lib\ssl.py", line 1052, in recv_into
+    return self.read(nbytes, buffer)
+  File "D:\Program Files\python\lib\ssl.py", line 911, in read
+    return self._sslobj.read(len, buffer)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 29, in test_001
+    res = http_requests().http_requests(a["http_url"], a["http_mthod"], a["http_param"])
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 47, in http_requests
+    res = requests.post(url,json=http_param,headers = http_header)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_11</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_11'>通过</button>
+    <div id='div_pt1_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_11'>通过</button>
+    <div id='div_pt1_11' class="collapse in" align="left">
+    <pre>
+    
+pt1_11: ----------------------------------------
+测试场景：限时授权_有效校验_相同userKey再次分享[200]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_12' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_12</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_12'>通过</button>
+    <div id='div_pt1_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_12'>通过</button>
+    <div id='div_pt1_12' class="collapse in" align="left">
+    <pre>
+    
+pt1_12: ----------------------------------------
+测试场景：限时授权_有效校验_用户无资源分享权限（与空间资源无关）[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_002', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用失败:{'utMsg': '用户必须为资源拥有者！', 'utCode': 1406, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_13' class='none'>
+    <td class='failCase'><div class='testcase'>test_001_13</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_13'>失败</button>
+    <div id='div_ft1_13' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_13' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_13'>失败</button>
+    <div id='div_ft1_13' class="collapse in" align="left">
+    <pre>
+    
+ft1_13: ----------------------------------------
+测试场景：限时授权_有效校验_用户无资源分享权限（为资源分享者，user_share登陆分享）[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用成功: &lt;Response [200]&gt;
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 47, in test_001
+    self.assertEqual(a["code"],res.status_code,"测试失败")
+AssertionError: 500 != 200 : 测试失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_14' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_14</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_14' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_14'>错误</button>
+    <div id='div_ft1_14' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_14' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_14'>错误</button>
+    <div id='div_ft1_14' class="collapse in" align="left">
+    <pre>
+    
+ft1_14: ----------------------------------------
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Program Files\python\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Program Files\python\lib\ssl.py", line 1052, in recv_into
+    return self.read(nbytes, buffer)
+  File "D:\Program Files\python\lib\ssl.py", line 911, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\retry.py", line 400, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Program Files\python\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Program Files\python\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Program Files\python\lib\ssl.py", line 1052, in recv_into
+    return self.read(nbytes, buffer)
+  File "D:\Program Files\python\lib\ssl.py", line 911, in read
+    return self._sslobj.read(len, buffer)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 29, in test_001
+    res = http_requests().http_requests(a["http_url"], a["http_mthod"], a["http_param"])
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 47, in http_requests
+    res = requests.post(url,json=http_param,headers = http_header)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_15' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_15</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_15' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_15'>错误</button>
+    <div id='div_ft1_15' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_15' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_15'>错误</button>
+    <div id='div_ft1_15' class="collapse in" align="left">
+    <pre>
+    
+ft1_15: ----------------------------------------
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Program Files\python\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Program Files\python\lib\ssl.py", line 1052, in recv_into
+    return self.read(nbytes, buffer)
+  File "D:\Program Files\python\lib\ssl.py", line 911, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\retry.py", line 400, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Program Files\python\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Program Files\python\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Program Files\python\lib\ssl.py", line 1052, in recv_into
+    return self.read(nbytes, buffer)
+  File "D:\Program Files\python\lib\ssl.py", line 911, in read
+    return self._sslobj.read(len, buffer)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 29, in test_001
+    res = http_requests().http_requests(a["http_url"], a["http_mthod"], a["http_param"])
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 47, in http_requests
+    res = requests.post(url,json=http_param,headers = http_header)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_16' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_16</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_16' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_16'>通过</button>
+    <div id='div_pt1_16' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_16' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_16'>通过</button>
+    <div id='div_pt1_16' class="collapse in" align="left">
+    <pre>
+    
+pt1_16: ----------------------------------------
+测试场景：限时授权_有效校验_endDateTime&lt;当前时间[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2018-12-01 10:35', 'endDateTime': '2018-12-01 10:35', 'count': 10}
+接口调用失败:{'utMsg': '结束时间需要大于当前时间！', 'utCode': 1504, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_17' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_17</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_17' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_17'>通过</button>
+    <div id='div_pt1_17' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_17' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_17'>通过</button>
+    <div id='div_pt1_17' class="collapse in" align="left">
+    <pre>
+    
+pt1_17: ----------------------------------------
+测试场景：限时授权_必填校验_authSpace为空[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': '', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用失败:{'utMsg': 'authSpace:权限空间标识不能为空; ', 'utCode': 1202, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_18' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_18</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_18' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_18'>通过</button>
+    <div id='div_pt1_18' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_18' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_18'>通过</button>
+    <div id='div_pt1_18' class="collapse in" align="left">
+    <pre>
+    
+pt1_18: ----------------------------------------
+测试场景：限时授权_必填校验_resourceKey为空[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': '', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '2020-01-20 10:35', 'count': 10}
+接口调用失败:{'utMsg': 'resourceKey:资源唯一标识不能为空; ', 'utCode': 1202, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_19' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_19</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_19' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_19'>错误</button>
+    <div id='div_ft1_19' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_19' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_19'>错误</button>
+    <div id='div_ft1_19' class="collapse in" align="left">
+    <pre>
+    
+ft1_19: ----------------------------------------
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\retry.py", line 400, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Program Files\python\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 29, in test_001
+    res = http_requests().http_requests(a["http_url"], a["http_mthod"], a["http_param"])
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 47, in http_requests
+    res = requests.post(url,json=http_param,headers = http_header)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_20' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_20</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_20' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_20'>错误</button>
+    <div id='div_ft1_20' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_20' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_20'>错误</button>
+    <div id='div_ft1_20' class="collapse in" align="left">
+    <pre>
+    
+ft1_20: ----------------------------------------
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Program Files\python\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Program Files\python\lib\ssl.py", line 1052, in recv_into
+    return self.read(nbytes, buffer)
+  File "D:\Program Files\python\lib\ssl.py", line 911, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\retry.py", line 400, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Program Files\python\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Program Files\python\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Program Files\python\lib\ssl.py", line 1052, in recv_into
+    return self.read(nbytes, buffer)
+  File "D:\Program Files\python\lib\ssl.py", line 911, in read
+    return self._sslobj.read(len, buffer)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 29, in test_001
+    res = http_requests().http_requests(a["http_url"], a["http_mthod"], a["http_param"])
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 47, in http_requests
+    res = requests.post(url,json=http_param,headers = http_header)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_21' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_21</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_21' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_21'>错误</button>
+    <div id='div_ft1_21' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_21' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_21'>错误</button>
+    <div id='div_ft1_21' class="collapse in" align="left">
+    <pre>
+    
+ft1_21: ----------------------------------------
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "D:\Program Files\python\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "D:\Program Files\python\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.VerifiedHTTPSConnection object at 0x00000000046FB208&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='oauthuat.utcook.com', port=443): Max retries exceeded with url: //uaa/oauth/login (Caused by NewConnectionError('&lt;urllib3.connection.VerifiedHTTPSConnection object at 0x00000000046FB208&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 29, in test_001
+    res = http_requests().http_requests(a["http_url"], a["http_mthod"], a["http_param"])
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 40, in http_requests
+    http_header = http_requests().login_requests()#调用login_requests函数
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 25, in login_requests
+    res = requests.post(url, param, headers = header) #发送登陆https请求
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='oauthuat.utcook.com', port=443): Max retries exceeded with url: //uaa/oauth/login (Caused by NewConnectionError('&lt;urllib3.connection.VerifiedHTTPSConnection object at 0x00000000046FB208&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。'))
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_22' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_22</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_22' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_22'>通过</button>
+    <div id='div_pt1_22' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_22' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_22'>通过</button>
+    <div id='div_pt1_22' class="collapse in" align="left">
+    <pre>
+    
+pt1_22: ----------------------------------------
+测试场景：限时授权_必填校验_endDateTime为空[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '', 'count': 10}
+接口调用失败:{'utMsg': 'endDateTime:结束时间不能为空; ', 'utCode': 1202, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_23' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_23</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_23' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_23'>错误</button>
+    <div id='div_ft1_23' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_23' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_23'>错误</button>
+    <div id='div_ft1_23' class="collapse in" align="left">
+    <pre>
+    
+ft1_23: ----------------------------------------
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "D:\Program Files\python\lib\site-packages\urllib3\connection.py", line 394, in connect
+    ssl_context=context,
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\ssl_.py", line 370, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File "D:\Program Files\python\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "D:\Program Files\python\lib\ssl.py", line 853, in _create
+    self.do_handshake()
+  File "D:\Program Files\python\lib\ssl.py", line 1117, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\retry.py", line 400, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Program Files\python\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "D:\Program Files\python\lib\site-packages\urllib3\connection.py", line 394, in connect
+    ssl_context=context,
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\ssl_.py", line 370, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File "D:\Program Files\python\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "D:\Program Files\python\lib\ssl.py", line 853, in _create
+    self.do_handshake()
+  File "D:\Program Files\python\lib\ssl.py", line 1117, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', OSError(0, 'Error'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 29, in test_001
+    res = http_requests().http_requests(a["http_url"], a["http_mthod"], a["http_param"])
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 40, in http_requests
+    http_header = http_requests().login_requests()#调用login_requests函数
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 25, in login_requests
+    res = requests.post(url, param, headers = header) #发送登陆https请求
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', OSError(0, 'Error'))
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_24' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_24</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_24' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_24'>通过</button>
+    <div id='div_pt1_24' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_24' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_24'>通过</button>
+    <div id='div_pt1_24' class="collapse in" align="left">
+    <pre>
+    
+pt1_24: ----------------------------------------
+测试场景：限时授权_格式校验_startDateTime格式有误_非time[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '二零一九年', 'endDateTime': '2020-12-01 10:35', 'count': 10}
+接口调用失败:{'utMsg': '时间格式有误 yyyy-MM-dd HH:mm ,请重新输入！', 'utCode': 1108, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_25' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_25</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_25' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_25'>通过</button>
+    <div id='div_pt1_25' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_25' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_25'>通过</button>
+    <div id='div_pt1_25' class="collapse in" align="left">
+    <pre>
+    
+pt1_25: ----------------------------------------
+测试场景：限时授权_格式校验_startDateTime格式有误_time格式不支持[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '20191201 10:35', 'endDateTime': '2020-12-01 10:35', 'count': 10}
+接口调用失败:{'utMsg': '时间格式有误 yyyy-MM-dd HH:mm ,请重新输入！', 'utCode': 1108, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_26' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_26</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_26' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_26'>错误</button>
+    <div id='div_ft1_26' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_26' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_26'>错误</button>
+    <div id='div_ft1_26' class="collapse in" align="left">
+    <pre>
+    
+ft1_26: ----------------------------------------
+----------------------------------------
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\Program Files\python\lib\site-packages\urllib3\util\retry.py", line 400, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Program Files\python\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    six.raise_from(e, None)
+  File "&lt;string&gt;", line 3, in raise_from
+  File "D:\Program Files\python\lib\site-packages\urllib3\connectionpool.py", line 416, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Program Files\python\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\Program Files\python\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\Program Files\python\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Program Files\python\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "E:\jiangman\newtest\test_authority\test_case\test_case_sit.py", line 29, in test_001
+    res = http_requests().http_requests(a["http_url"], a["http_mthod"], a["http_param"])
+  File "E:\jiangman\newtest\test_authority\common\http_requests.py", line 47, in http_requests
+    res = requests.post(url,json=http_param,headers = http_header)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Program Files\python\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_27' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_27</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_27' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_27'>通过</button>
+    <div id='div_pt1_27' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_27' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_27'>通过</button>
+    <div id='div_pt1_27' class="collapse in" align="left">
+    <pre>
+    
+pt1_27: ----------------------------------------
+测试场景：限时授权_格式校验_endDateTime格式有误[500]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{'authSpace': 'key_authSpace200_001', 'resourceKey': 'ResourceKey200_001', 'functionNameList': ['functionNameList0_001', 'functionNameList0_002'], 'userKey': 'user_used01', 'startDateTime': '2019-12-01 10:35', 'endDateTime': '202-1201 10:35', 'count': 10}
+接口调用失败:{'utMsg': '时间格式有误 yyyy-MM-dd HH:mm ,请重新输入！', 'utCode': 1108, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_28' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_001_28</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_28' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_28'>通过</button>
+    <div id='div_pt1_28' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_28' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_28'>通过</button>
+    <div id='div_pt1_28' class="collapse in" align="left">
+    <pre>
+    
+pt1_28: ----------------------------------------
+测试场景：限时授权_格式、边界校验[]
+调用的地址是:https://mobileuat.utcook.com//auth-internet/authorize/timeLimited
+请求参数:{}
+接口调用失败:{'utMsg': 'endDateTime:结束时间不能为空; functionNameList:功能列表不能为空; userKey:用户唯一标识不能为空; authSpace:权限空间标识不能为空; startDateTime:起始时间不能为空; resourceKey:资源唯一标识不能为空; ', 'utCode': 1202, 'utService': 'auth-internet-service'}:
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_29' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_002</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_29' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_29'>通过</button>
+    <div id='div_pt1_29' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_29' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_29'>通过</button>
+    <div id='div_pt1_29' class="collapse in" align="left">
+    <pre>
+    
+pt1_29: ----------------------------------------
+----------------------------------------
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>总计</td>
+    <td>29</td>
+    <td>18</td>
+    <td>1</td>
+    <td>10</td>
+    <td>通过率：62.07%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+</body>
+</html>
