@@ -1,0 +1,15 @@
+[测试用例文件]：D:\PythonProject\Demo\51ITF\case\cart\test_cart_create.py
+[用例ID]：cart_create_09 
+[url]：http://shop.ecmobile.cn/ecmobile/?url=/cart/create
+[method]：post
+[请求数据]：{'json': '{"session":{"sid": "401ddbf982a86f7d61bebf2e1fbef51e39286693", "uid": "1"},"goods_id":139,"number":"yy"}'}
+[原始响应]：{'status': {'succeed': 0, 'error_code': 8, 'error_desc': '处理失败'}}
+[处理后的响应]：{"status={"succeed=0, "error_code=8, "error_desc=处理失败"}}
+
+[检查点]: succeed=0;error_code=8;error_desc=处理失败
+=========================开始检查结果=========================
+[第1项检查]: succeed=0 in {"status={"succeed=0, "error_code=8, "error_desc=处理失败"}}
+[第2项检查]: error_code=8 in {"status={"succeed=0, "error_code=8, "error_desc=处理失败"}}
+[第3项检查]: error_desc=处理失败 in {"status={"succeed=0, "error_code=8, "error_desc=处理失败"}}
+===========================检查完毕==========================
+恭喜，检查全部通过！

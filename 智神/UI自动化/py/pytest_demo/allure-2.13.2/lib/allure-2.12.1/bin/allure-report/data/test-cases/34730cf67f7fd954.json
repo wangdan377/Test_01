@@ -1,0 +1,92 @@
+{
+  "uid" : "34730cf67f7fd954",
+  "name" : "test_cart_update_2",
+  "fullName" : "case.cart.test_cart_update.TestCartUpdate#test_cart_update_2",
+  "historyId" : "493a6435cf2617222bb04b0fdb2e19c4",
+  "time" : {
+    "start" : 1561365549957,
+    "stop" : 1561365549960,
+    "duration" : 3
+  },
+  "status" : "broken",
+  "statusMessage" : "IndexError: tuple index out of range",
+  "statusTrace" : "self = <cart.test_cart_update.TestCartUpdate testMethod=test_cart_update_2>\ncase = {'check': 'succeed=1', 'data': '{\"new_number\":2,\"session\":$t{session},\"rec_id\":$s{SELECT rec_id FROM `ecs_cart` ORDER BY rec_id DESC LIMIT 1;}}', 'desc': '正常修改购物车商品数量', 'headers': '', ...}\n\n    @ddt.data(*data['cart_update'])\n    def test_cart_update(self, case):\n        # 获取用例数据\n        case_id = case.get('id', 'null')\n        url = parse.urljoin(host, case.get('url', 'no url'))\n        method = case.get('method', 'post')\n        headers = case.get('headers', None)\n        desc = case.get('desc', '没有描述')\n        data = case.get('data')\n        check = case['check']\n    \n        # 在报告中展示测试用例的描述\n        self._testMethodDoc = desc\n    \n        # 数据处理, 由于数据中有部分内容需要处理\n>       data = format_request_data_extend(data)\n\ncase\\cart\\test_cart_update.py:29: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nlib\\common.py:175: in format_request_data_extend\n    value = db.get_first_data(v)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nsql = 'SELECT rec_id FROM `ecs_cart` ORDER BY rec_id DESC LIMIT 1;'\n\n    def get_first_data(sql):\n    \n>       return get_data_by_sql(sql)[0][0]\nE       IndexError: tuple index out of range\n\nlib\\db.py:19: IndexError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "_UnitTestCase__pytest_class_setup",
+    "time" : {
+      "start" : 1561365548913,
+      "stop" : 1561365548913,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "_UnitTestCase__pytest_class_setup::0",
+    "time" : {
+      "start" : 1561365551075,
+      "stop" : 1561365551075,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "case.cart"
+  }, {
+    "name" : "suite",
+    "value" : "test_cart_update"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestCartUpdate"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-NG9SMIL"
+  }, {
+    "name" : "thread",
+    "value" : "8000-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "case.cart.test_cart_update"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "34730cf67f7fd954.json",
+  "parameterValues" : [ ]
+}

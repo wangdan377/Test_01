@@ -1,0 +1,15 @@
+[测试用例文件]：D:\PythonProject\Demo\51ITF\case\test_cart_create.py
+[用例ID]：cart_create_07 
+[url]：http://shop.ecmobile.cn/ecmobile/?url=/cart/create
+[method]：post
+[请求数据]：{'json': '{"session":"b85cb7f121cd7dbc25ac233ce81b5d9f070ba950","goods_id":139,"number":1}'}
+[原始响应]：{'status': {'succeed': 0, 'error_code': 100, 'error_desc': '您的帐号已过期'}}
+[处理后的响应]：{"status={"succeed=0, "error_code=100, "error_desc=您的帐号已过期"}}
+
+[检查点]: succeed=0;error_code=100;error_desc=您的帐号已过期
+=========================开始检查结果=========================
+[第1项检查]: succeed=0 in {"status={"succeed=0, "error_code=100, "error_desc=您的帐号已过期"}}
+[第2项检查]: error_code=100 in {"status={"succeed=0, "error_code=100, "error_desc=您的帐号已过期"}}
+[第3项检查]: error_desc=您的帐号已过期 in {"status={"succeed=0, "error_code=100, "error_desc=您的帐号已过期"}}
+===========================检查完毕==========================
+恭喜，检查全部通过！

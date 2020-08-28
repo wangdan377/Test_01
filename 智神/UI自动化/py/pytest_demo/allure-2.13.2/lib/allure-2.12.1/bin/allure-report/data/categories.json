@@ -1,0 +1,86 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: 'succeed=0' not found in '{\"data=[], \"status={\"succeed=1}}'",
+      "children" : [ {
+        "name" : "test_cart_create_05",
+        "uid" : "eefc34ab85c9e57a",
+        "parentUid" : "fc1227cca7d8b063f29ea50f0039e214",
+        "status" : "failed",
+        "time" : {
+          "start" : 1561365534008,
+          "stop" : 1561365535041,
+          "duration" : 1033
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_cart_create_05",
+        "uid" : "90bd187bfbeecfce",
+        "parentUid" : "fc1227cca7d8b063f29ea50f0039e214",
+        "status" : "failed",
+        "time" : {
+          "start" : 1561365543606,
+          "stop" : 1561365544652,
+          "duration" : 1046
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "fc1227cca7d8b063f29ea50f0039e214"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  }, {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "IndexError: tuple index out of range",
+      "children" : [ {
+        "name" : "test_cart_update_2",
+        "uid" : "34730cf67f7fd954",
+        "parentUid" : "2c6752fe25a95e5634d9e2bf3ed0f246",
+        "status" : "broken",
+        "time" : {
+          "start" : 1561365549957,
+          "stop" : 1561365549960,
+          "duration" : 3
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_cart_update_4",
+        "uid" : "51a7b25418fd8c70",
+        "parentUid" : "2c6752fe25a95e5634d9e2bf3ed0f246",
+        "status" : "broken",
+        "time" : {
+          "start" : 1561365551026,
+          "stop" : 1561365551029,
+          "duration" : 3
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_cart_update_5",
+        "uid" : "917fc7b8233fe113",
+        "parentUid" : "2c6752fe25a95e5634d9e2bf3ed0f246",
+        "status" : "broken",
+        "time" : {
+          "start" : 1561365551040,
+          "stop" : 1561365551064,
+          "duration" : 24
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "2c6752fe25a95e5634d9e2bf3ed0f246"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ]
+}

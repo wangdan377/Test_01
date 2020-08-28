@@ -1,0 +1,25 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "DESKTOP-TKJPK2C",
+    "children" : [ {
+      "name" : "14732-MainThread",
+      "children" : [ {
+        "name" : "test_02",
+        "uid" : "11937d21d6575918",
+        "parentUid" : "77587eed145f7011b7fb9e7b87382d49",
+        "status" : "passed",
+        "time" : {
+          "start" : 1590484255863,
+          "stop" : 1590484256419,
+          "duration" : 556
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "77587eed145f7011b7fb9e7b87382d49"
+    } ],
+    "uid" : "e655e1a024141f10065cd01f8b993289"
+  } ]
+}

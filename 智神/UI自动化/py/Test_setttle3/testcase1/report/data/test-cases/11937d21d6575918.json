@@ -1,0 +1,107 @@
+{
+  "uid" : "11937d21d6575918",
+  "name" : "test_02",
+  "fullName" : "test_count02.MyTest#test_02",
+  "historyId" : "479dca987e80ab64061b1425f0db6691",
+  "time" : {
+    "start" : 1590484255863,
+    "stop" : 1590484256419,
+    "duration" : 556
+  },
+  "description" : "绑定账户",
+  "descriptionHtml" : "<p>绑定账户</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "_UnitTestCase__pytest_class_setup",
+    "time" : {
+      "start" : 1590484255862,
+      "stop" : 1590484255862,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "description" : "绑定账户",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "99ac8780a137b2fb",
+      "name" : "stdout",
+      "source" : "99ac8780a137b2fb.txt",
+      "type" : "text/plain",
+      "size" : 118
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : true,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ {
+    "name" : "_UnitTestCase__pytest_class_setup::0",
+    "time" : {
+      "start" : 1590484256420,
+      "stop" : 1590484256420,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "feature",
+    "value" : "123"
+  }, {
+    "name" : "story",
+    "value" : "新建优模型"
+  }, {
+    "name" : "suite",
+    "value" : "test_count02"
+  }, {
+    "name" : "subSuite",
+    "value" : "MyTest"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-TKJPK2C"
+  }, {
+    "name" : "thread",
+    "value" : "14732-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_count02"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "11937d21d6575918.json",
+  "parameterValues" : [ ]
+}
