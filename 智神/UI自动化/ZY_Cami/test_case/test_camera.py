@@ -17,7 +17,8 @@ driver.find_element_by_id("com.zhiyun.cama:id/ib_help").click()	 #问号
 time.sleep(2)
 driver.find_element_by_id("com.zhiyun.cama:id/enter").click()	  #不连设备,直接进入
 time.sleep(2)
-driver.find_element_by_id("com.zhiyun.cama:id/iv_beauty").click()    #美颜
+# driver.find_element_by_id("com.zhiyun.cama:id/iv_beauty").click()    #美颜
+# time.sleep(2)
 # 获取屏幕的size
 size = driver.get_window_size()
 # print(size)   #{'width': 1176, 'height': 2206}  首页的宽高
@@ -28,8 +29,18 @@ y = driver.get_window_size()["height"]
 # z = driver.swipe(x*0.5,y*0.5,x*0.5,y*0.5,duration=2000)
 # s=driver.swipe(1 / 2 * x, 1 / 2 * y, 1 / 2 * x, 1 / 3 * y, 200)#向上滑动
 # time.sleep(2)
-s=driver.swipe( x*0.15, y*0.58, x*0.1, y*0.2, 200)#向下滑动  x不变  y由小变大
 time.sleep(2)
+# driver.swipe( x*0.15, y*0.3, x*0.15, y*0.8, 200)#向下滑动  x不变  y由小变大  美颜向下滑动
+# time.sleep(2)
+# driver.tap([(1100,265),(1150,325)],500)
+# time.sleep(2)
+# driver.swipe( x*0.96, y*0.52, x*0.96, y*0.58, 200)#向下滑动  x不变  y由小变大  拍照-录像，但是会记录上次的结果
+# driver.swipe( x*0.96, y*0.52, x*0.96, y*0.46, 200)#向上滑动  x不变  y由大变小
+time.sleep(2)
+driver.find_element_by_id("com.zhiyun.cama:id/cb_action").click()
+
+driver.find_element_by_id("com.zhiyun.cama:id/cb_action").click()
+
 
 
 
