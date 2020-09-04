@@ -1,0 +1,110 @@
+{
+  "uid" : "eefc34ab85c9e57a",
+  "name" : "test_cart_create_05",
+  "fullName" : "case.test_cart_create.TestCartCreate#test_cart_create_05",
+  "historyId" : "02f145b4d123544efc3bf6ba8eed4941",
+  "time" : {
+    "start" : 1561365534008,
+    "stop" : 1561365535041,
+    "duration" : 1033
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: 'succeed=0' not found in '{\"data=[], \"status={\"succeed=1}}'",
+  "statusTrace" : "self = <test_cart_create.TestCartCreate testMethod=test_cart_create_05>\ncase = {'check': 'succeed=0;error_code=14;error_desc=购买失败', 'data': '{\"session\":$t{session},\"goods_id\":139,\"number\":-5}', 'desc': 'number 负数', 'headers': '', ...}\n\n    @ddt.data(*data['cart_create'])\n    def test_cart_create(self, case):\n        # 获取用例数据\n        case_id = case.get('id', 'null')\n        url = parse.urljoin(host, case.get('url', 'no url'))\n        method = case.get('method', 'post')\n        headers = case.get('headers', None)\n        desc = case.get('desc', '没有描述')\n        data = case.get('data')\n        check = case['check']\n    \n        # 在报告中展示测试用例的描述\n        self._testMethodDoc = desc\n    \n        # 数据处理, 由于数据中有部分内容需要处理\n        data = format_request_data_extend(data)\n        # 根据 ecshop 的特点构造请求数据 json=json格式的请求数据\n        request_data = dict(json=data)\n    \n        # 根据方法发送请求, 并将服务端的响应保存在 r 对象中\n        r = requests.request(method, url, data=request_data, headers=headers)\n        # 保存响应结果到 json 文件，以便后续使用\n        save_response_to_json_file(case_id, r.json())\n    \n        # 对响应结果进行处理, 以便断言\n        r2 = json.dumps(r.json(), ensure_ascii=False).lower().replace('\": \"', '=').replace('\": ', '=')\n    \n        print('[测试用例文件]：%s\\n'\n              '[用例ID]：%s \\n'\n              '[url]：%s\\n'\n              '[method]：%s\\n'\n              '[请求数据]：%s\\n'\n              '[原始响应]：%s\\n'\n              '[处理后的响应]：%s\\n' % (__file__,case_id, url, method,request_data,r.json(),r2))\n    \n        # 对检查点进行处理\n        checks = check.split(';')\n        print('[检查点]:', check)\n        print('=========================开始检查结果=========================')\n    \n        for i in range(len(checks)):\n            print('[第%s项检查]: %s in %s' % (i + 1, checks[i], r2))\n>           self.assertIn(checks[i], r2)\nE           AssertionError: 'succeed=0' not found in '{\"data=[], \"status={\"succeed=1}}'\n\ncase\\test_cart_create.py:56: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "_UnitTestCase__pytest_class_setup",
+    "time" : {
+      "start" : 1561365529804,
+      "stop" : 1561365529804,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: 'succeed=0' not found in '{\"data=[], \"status={\"succeed=1}}'",
+    "statusTrace" : "self = <test_cart_create.TestCartCreate testMethod=test_cart_create_05>\ncase = {'check': 'succeed=0;error_code=14;error_desc=购买失败', 'data': '{\"session\":$t{session},\"goods_id\":139,\"number\":-5}', 'desc': 'number 负数', 'headers': '', ...}\n\n    @ddt.data(*data['cart_create'])\n    def test_cart_create(self, case):\n        # 获取用例数据\n        case_id = case.get('id', 'null')\n        url = parse.urljoin(host, case.get('url', 'no url'))\n        method = case.get('method', 'post')\n        headers = case.get('headers', None)\n        desc = case.get('desc', '没有描述')\n        data = case.get('data')\n        check = case['check']\n    \n        # 在报告中展示测试用例的描述\n        self._testMethodDoc = desc\n    \n        # 数据处理, 由于数据中有部分内容需要处理\n        data = format_request_data_extend(data)\n        # 根据 ecshop 的特点构造请求数据 json=json格式的请求数据\n        request_data = dict(json=data)\n    \n        # 根据方法发送请求, 并将服务端的响应保存在 r 对象中\n        r = requests.request(method, url, data=request_data, headers=headers)\n        # 保存响应结果到 json 文件，以便后续使用\n        save_response_to_json_file(case_id, r.json())\n    \n        # 对响应结果进行处理, 以便断言\n        r2 = json.dumps(r.json(), ensure_ascii=False).lower().replace('\": \"', '=').replace('\": ', '=')\n    \n        print('[测试用例文件]：%s\\n'\n              '[用例ID]：%s \\n'\n              '[url]：%s\\n'\n              '[method]：%s\\n'\n              '[请求数据]：%s\\n'\n              '[原始响应]：%s\\n'\n              '[处理后的响应]：%s\\n' % (__file__,case_id, url, method,request_data,r.json(),r2))\n    \n        # 对检查点进行处理\n        checks = check.split(';')\n        print('[检查点]:', check)\n        print('=========================开始检查结果=========================')\n    \n        for i in range(len(checks)):\n            print('[第%s项检查]: %s in %s' % (i + 1, checks[i], r2))\n>           self.assertIn(checks[i], r2)\nE           AssertionError: 'succeed=0' not found in '{\"data=[], \"status={\"succeed=1}}'\n\ncase\\test_cart_create.py:56: AssertionError",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "2bbf2a0ce105ea5a",
+      "name" : "stdout",
+      "source" : "2bbf2a0ce105ea5a.txt",
+      "type" : "text/plain",
+      "size" : 618
+    } ],
+    "parameters" : [ ],
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ {
+    "name" : "_UnitTestCase__pytest_class_setup::0",
+    "time" : {
+      "start" : 1561365539362,
+      "stop" : 1561365539362,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "case"
+  }, {
+    "name" : "suite",
+    "value" : "test_cart_create"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestCartCreate"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-NG9SMIL"
+  }, {
+    "name" : "thread",
+    "value" : "8000-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "case.test_cart_create"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "eefc34ab85c9e57a.json",
+  "parameterValues" : [ ]
+}

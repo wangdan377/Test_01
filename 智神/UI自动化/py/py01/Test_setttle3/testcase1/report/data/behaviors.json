@@ -1,0 +1,25 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "123",
+    "children" : [ {
+      "name" : "新建优模型",
+      "children" : [ {
+        "name" : "test_02",
+        "uid" : "11937d21d6575918",
+        "parentUid" : "fb42d7ea35b260a98b631be75976fe66",
+        "status" : "passed",
+        "time" : {
+          "start" : 1590484255863,
+          "stop" : 1590484256419,
+          "duration" : 556
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "fb42d7ea35b260a98b631be75976fe66"
+    } ],
+    "uid" : "d66a4522f9f60f7a5f84d0f199da216f"
+  } ]
+}

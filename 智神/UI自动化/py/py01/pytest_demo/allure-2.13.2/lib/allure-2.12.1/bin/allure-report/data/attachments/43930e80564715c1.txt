@@ -1,0 +1,13 @@
+[测试用例文件]：D:\PythonProject\Demo\51ITF\case\test_cart_create.py
+[用例ID]：cart_create_01 
+[url]：http://shop.ecmobile.cn/ecmobile/?url=/cart/create
+[method]：post
+[请求数据]：{'json': '{"session":{"sid": "401ddbf982a86f7d61bebf2e1fbef51e39286693", "uid": "1"},"goods_id":139,"number":1}'}
+[原始响应]：{'data': [], 'status': {'succeed': 1}}
+[处理后的响应]：{"data=[], "status={"succeed=1}}
+
+[检查点]: succeed=1
+=========================开始检查结果=========================
+[第1项检查]: succeed=1 in {"data=[], "status={"succeed=1}}
+===========================检查完毕==========================
+恭喜，检查全部通过！

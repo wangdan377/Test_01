@@ -1,0 +1,15 @@
+[测试用例文件]：D:\PythonProject\Demo\51ITF\case\cart\test_cart_update.py
+[用例ID]：cart_update_02 
+[url]：http://shop.ecmobile.cn/ecmobile/?url=/cart/update
+[method]：post
+[请求数据]：{'json': '{"new_number":2,"session":{"sid": "401ddbf982a86f7d61bebf2e1fbef51e39286693", "uid": "1"},"rec_id":99999}'}
+[原始响应]：{'status': {'succeed': 0, 'error_code': 10008, 'error_desc': '库存不足'}}
+[处理后的响应]：{"status={"succeed=0, "error_code=10008, "error_desc=库存不足"}}
+
+[检查点]: succeed=0;error_code=10008;error_desc=库存不足
+=========================开始检查结果=========================
+[第1项检查]: succeed=0 in {"status={"succeed=0, "error_code=10008, "error_desc=库存不足"}}
+[第2项检查]: error_code=10008 in {"status={"succeed=0, "error_code=10008, "error_desc=库存不足"}}
+[第3项检查]: error_desc=库存不足 in {"status={"succeed=0, "error_code=10008, "error_desc=库存不足"}}
+===========================检查完毕==========================
+恭喜，检查全部通过！

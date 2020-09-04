@@ -1,0 +1,102 @@
+{
+  "uid" : "879be2b441282dfd",
+  "name" : "test_cart_create_09",
+  "fullName" : "case.test_cart_create.TestCartCreate#test_cart_create_09",
+  "historyId" : "8f091222fde9eec0f0fde1ef8ef50901",
+  "time" : {
+    "start" : 1561365537272,
+    "stop" : 1561365538304,
+    "duration" : 1032
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "_UnitTestCase__pytest_class_setup",
+    "time" : {
+      "start" : 1561365529804,
+      "stop" : 1561365529804,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "6579a3554c9a70fa",
+      "name" : "stdout",
+      "source" : "6579a3554c9a70fa.txt",
+      "type" : "text/plain",
+      "size" : 1022
+    } ],
+    "parameters" : [ ],
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ {
+    "name" : "_UnitTestCase__pytest_class_setup::0",
+    "time" : {
+      "start" : 1561365539362,
+      "stop" : 1561365539362,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "case"
+  }, {
+    "name" : "suite",
+    "value" : "test_cart_create"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestCartCreate"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-NG9SMIL"
+  }, {
+    "name" : "thread",
+    "value" : "8000-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "case.test_cart_create"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "879be2b441282dfd.json",
+  "parameterValues" : [ ]
+}
