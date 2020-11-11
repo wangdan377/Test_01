@@ -1,0 +1,44 @@
+2020-09-14 15:14:36,613 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:42] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 15:16:26,265 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:42] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 15:27:18,988 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:42] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 15:31:28,745 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:42] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 15:32:21,045 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:42] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 16:07:21,965 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:50] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 16:09:35,573 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:50] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 18:11:11,080 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:53] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 18:16:52,448 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:69] - ERROR: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to remote server. Original error: Error: read ECONNRESET
+
+2020-09-14 18:44:06,254 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:108] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 18:51:28,908 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:115] - ERROR: Message: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to remote server. Original error: Error: read ECONNRESET
+
+2020-09-14 18:52:02,522 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:109] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 18:54:26,908 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:110] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-14 18:57:02,009 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:110] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-15 09:53:00,560 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:108] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-15 11:48:04,996 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:108] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-15 11:51:01,606 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:108] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-15 12:08:04,776 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:112] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-15 12:12:32,650 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:112] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-15 12:13:44,609 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:112] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-15 12:14:51,432 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:110] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-15 12:15:32,906 - D:/ZY_Cami03/test_case01/test_beautify01.py[line:110] - ERROR: Message: An element could not be located on the page using the given search parameters.
+

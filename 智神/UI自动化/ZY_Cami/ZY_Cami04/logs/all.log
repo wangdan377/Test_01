@@ -1,0 +1,26 @@
+2020-09-10 10:32:17,060 - D:\ZY_Cami01\test_case\test_01.py[line:177] - DEBUG: debug
+2020-09-10 10:32:17,060 - D:\ZY_Cami01\test_case\test_01.py[line:178] - DEBUG: 'int' object is not subscriptable
+2020-09-10 10:32:17,060 - D:\ZY_Cami01\test_case\test_01.py[line:179] - INFO: 'int' object is not subscriptable
+2020-09-10 10:32:17,060 - D:\ZY_Cami01\test_case\test_01.py[line:180] - WARNING: 'int' object is not subscriptable
+2020-09-10 10:32:17,060 - D:\ZY_Cami01\test_case\test_01.py[line:181] - ERROR: 'int' object is not subscriptable
+2020-09-10 10:32:17,060 - D:\ZY_Cami01\test_case\test_01.py[line:182] - CRITICAL: 'int' object is not subscriptable
+2020-09-10 10:44:29,201 - D:\ZY_Cami01\test_case\test_01.py[line:178] - DEBUG: debug
+2020-09-10 10:44:43,999 - D:\ZY_Cami01\test_case\test_01.py[line:178] - DEBUG: debug
+2020-09-10 10:44:43,999 - D:\ZY_Cami01\test_case\test_01.py[line:179] - DEBUG: 'int' object is not subscriptable18-21行18-21行
+2020-09-10 10:44:43,999 - D:\ZY_Cami01\test_case\test_01.py[line:180] - INFO: 'int' object is not subscriptable
+2020-09-10 10:44:43,999 - D:\ZY_Cami01\test_case\test_01.py[line:181] - WARNING: 'int' object is not subscriptable
+2020-09-10 10:44:43,999 - D:\ZY_Cami01\test_case\test_01.py[line:182] - ERROR: 'int' object is not subscriptable
+2020-09-10 10:44:43,999 - D:\ZY_Cami01\test_case\test_01.py[line:183] - CRITICAL: 'int' object is not subscriptable
+2020-09-10 10:44:51,540 - D:\ZY_Cami01\test_case\test_01.py[line:178] - DEBUG: debug
+2020-09-10 10:44:51,540 - D:\ZY_Cami01\test_case\test_01.py[line:179] - DEBUG: 'int' object is not subscriptable18-21行18-21行
+2020-09-10 10:44:51,541 - D:\ZY_Cami01\test_case\test_01.py[line:180] - INFO: 'int' object is not subscriptable
+2020-09-10 10:44:51,541 - D:\ZY_Cami01\test_case\test_01.py[line:181] - WARNING: 'int' object is not subscriptable
+2020-09-10 10:44:51,541 - D:\ZY_Cami01\test_case\test_01.py[line:182] - ERROR: 'int' object is not subscriptable
+2020-09-10 10:44:51,541 - D:\ZY_Cami01\test_case\test_01.py[line:183] - CRITICAL: 'int' object is not subscriptable
+2020-09-10 10:44:57,358 - D:/ZY_Cami01/test_case/test_01.py[line:178] - DEBUG: debug
+2020-09-10 10:44:57,358 - D:/ZY_Cami01/test_case/test_01.py[line:179] - DEBUG: 'int' object is not subscriptable18-21行18-21行
+2020-09-10 10:44:57,358 - D:/ZY_Cami01/test_case/test_01.py[line:180] - INFO: 'int' object is not subscriptable
+2020-09-10 10:44:57,358 - D:/ZY_Cami01/test_case/test_01.py[line:181] - WARNING: 'int' object is not subscriptable
+2020-09-10 10:44:57,358 - D:/ZY_Cami01/test_case/test_01.py[line:182] - ERROR: 'int' object is not subscriptable
+2020-09-10 10:44:57,358 - D:/ZY_Cami01/test_case/test_01.py[line:183] - CRITICAL: 'int' object is not subscriptable
+2020-09-10 10:45:06,817 - D:/ZY_Cami01/test_case/test_01.py[line:178] - DEBUG: debug

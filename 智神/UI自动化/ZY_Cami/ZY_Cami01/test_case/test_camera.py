@@ -1,6 +1,17 @@
 from appium import webdriver
 import time,unittest,os,sys,HTMLTestRunner
 
+# 第一种方法
+"""desired_caps = {}
+desired_caps['platformName'] = 'Android'  # Android系统 or IOS系统
+desired_caps['deviceName'] = '7HX0219918017044'  # 真机或模块器名
+desired_caps['platformVersion'] = '10'  # Android系统版本
+desired_caps['appPackage'] = 'com.zhiyun.cama'  # APP包名
+desired_caps['appActivity'] = '.splash.SplashActivity'  # APP启动Activity
+desired_caps['noReset'] = True  # 每次打开APP不开启重置，否则每次都进入四个欢迎页
+desired_caps['resetKeyboard'] = True  # 隐藏键盘        self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)  # 启动APP
+driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)"""
+# 第二种方法
 desired_caps ={'platformName':'Android',#手机系统
                 'deviceName':'7HX0219918017044',
                 'noReset':True,#防止每次启动时软件初始化

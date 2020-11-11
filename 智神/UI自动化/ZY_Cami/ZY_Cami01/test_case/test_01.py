@@ -1,3 +1,4 @@
+import requests,json,unittest
 """# conding=utf-8
 import time
 from appium import webdriver
@@ -106,8 +107,8 @@ def beautify_010(self):  # 红润
         "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[5]").click()  # 红润
     return ''"""
 
-
-class Person:
+#self指的是类实例对象本身，并不是类本身
+"""class Person:
     def __init__(myname,name):   #self指的是类实例对象本身，并不是类本身
         myname.name = name
     def sayhello(myname):
@@ -122,4 +123,129 @@ class Preson:
     def sayhello(self):
         print('my name is:',self.name)
 p = Person('Bill')
-print(p)
+print(p)"""
+"""class Test:
+    def prt(self):    #self代表的是类的实例，而self.__class__则指向类
+        print(self)
+        print(self.__class__)
+t = Test()
+t.prt()"""
+"""class Parent():   #继承时，传入的是哪个实例，就是那个传入的实例，而不是指定义了self的类的实例
+    def pprt(self):
+        print(self)
+class Child(Parent):
+    def cprt(self):
+        print(self)
+c = Child()
+c.cprt()
+c.pprt()
+p = Parent()
+p.pprt()
+"""
+"""class A:
+    def a(self):
+        self.b = 1
+        print(2)
+
+    def c(self):
+        # self.a()   #调用上a的函数,第一种方法
+        A.a(self)   #调用上a的函数,第二种方法
+        d = 2+self.b
+        print(d)
+        return ''
+s =A()
+s.c()"""
+
+#定格为2位数
+"""def test_xiha():
+    li = ['a','b','c']
+    v = 1
+    for i in li:
+        v = v+0.1
+        print('{:.3f}'.format(v))  #定格为2位数
+        # print(v)
+test_xiha()"""
+
+
+
+"""raise后面的语句不再执行
+def test():
+    try:
+        if s is None:
+            print("s shi kong de ")
+            raise NameError  # 告诉系统受到异常信号 相当于认为制造了一个异常
+        print(3333333333)  # 在raise后面的语句不再执行。
+    except Exception:
+        print("8888888888888")
+
+
+if __name__ == "__main__":
+    s = None
+    test1()"""
+"""r = requests.get('https://api.github.com/events')
+print(r.content)
+# print(r.content)
+x = json.loads(r.content)   #转换为json格式
+print(x)    #x的值用断点打印出来"""
+"""import requests
+s = requests.Session()   #requests会话
+#使用get访问了一个网址，这个get请求使服务端创建了一个服务端的session对象，并且这个网址的作用是把服务端的session内容返回个用户
+r = s.get('http://httpbin.org/cookies/set/sessioncookie/123456789')
+# r = s.get("http://httpbin.org/cookies")#用户get了另一个网址，服务端返回了一个“sessioncookie”的数据。这个数据恰恰是第三行的返回值，这说明服务端正确的记住我了我们
+print(r.text)
+"""
+
+# r = requests.get('https://api.github.com/orgs/TestUpCommunity')
+# print(r.json()['name'])
+# print(r.json()['html_url'])
+# print(r.json()['created_at'])
+# print(r.json()['updated_at'])
+"""def foo(s):
+    return 10 / int(s)
+
+
+def bar(s):
+    return foo(s) * 2
+
+
+def main():
+    try:
+        bar('0')
+        print(bar('21'))
+    except Exception as e:
+        print('Error:', e)
+    finally:
+        print('finally...')
+
+# print(bar('21'))
+# print(foo(2))
+main()"""
+"""import logging
+
+
+def foo(s):
+    return 10 / int(s)
+
+
+def bar(s):
+    return foo(s) * 2
+
+
+def main():
+    try:
+        bar('0')
+    except Exception as e:
+        logging.exception(e)
+
+
+main()
+print('END')
+"""
+"""
+my_list = [i**2 for i in range(1,11)]
+my_file = open("output.txt",'w')
+for i in my_list:
+    my_file.write(str(i)+'\n')
+my_file.close()"""
+
+

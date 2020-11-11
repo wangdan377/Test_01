@@ -17,6 +17,7 @@ import HTMLTestRunnerCN3_pie_chart_screen
 
 #未登录状态下去登录
 class LoginTest(unittest.TestCase):
+    '''未登录，去登录，我的页面退出登录'''
     def setUp(self):
         print('start test')
         """desired_caps = {}

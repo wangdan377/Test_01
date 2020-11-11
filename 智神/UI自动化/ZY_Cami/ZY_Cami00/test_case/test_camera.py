@@ -11,16 +11,46 @@ desired_caps ={'platformName':'Android',#手机系统
 driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 time.sleep(5)
 driver.find_element_by_xpath("//android.widget.FrameLayout[@content-desc=\"Home\"]/android.widget.ImageView").click()   #进入首页
+time.sleep(3)
 driver.find_element_by_id("com.zhiyun.cama:id/iv_camera").click()	  #相机
+time.sleep(5)
+# driver.find_element_by_id("com.zhiyun.cama:id/bt_connect").click()      #连接
+# time.sleep(5)
+# driver.find_element_by_id("com.zhiyun.cama:id/ib_help").click()	 #问号
+# time.sleep(2)
+# driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[3]").click()  #直接进入
 time.sleep(2)
-driver.find_element_by_id("com.zhiyun.cama:id/ib_help").click()	 #问号
+driver.find_element_by_id("com.zhiyun.cama:id/iv_setting").click()   #右上角设置的三个点
 time.sleep(2)
-driver.find_element_by_id("com.zhiyun.cama:id/enter").click()	  #不连设备,直接进入
+# driver.find_element_by_id("com.zhiyun.cama:id/enter").click()	  #不连设备,直接进入
+# time.sleep(2)
+
+driver.find_element_by_id("com.zhiyun.cama:id/rb_stabilizer").click()  # 云台
+time.sleep(2)
+driver.find_element_by_id("com.zhiyun.cama:id/sb_zoom_speed").click()		#变焦速度
 time.sleep(2)
 # driver.find_element_by_id("com.zhiyun.cama:id/iv_beauty").click()    #美颜
 # time.sleep(2)
+# driver.tap([(1180, 540)])     #美颜进度条
+# time.sleep(2)
+
+# driver.find_element_by_id("com.zhiyun.cama:id/cb_action").click()    #拍照
+# time.sleep(2)
+"""heng =1022
+for i in range(0,100):
+    try:
+        heng = heng-6
+        driver.tap([(632,heng)])
+    except:
+        try:
+            heng = heng - 7
+            driver.tap([(632, heng)])
+        except:
+            heng = heng - 8
+            driver.tap([(632, heng)])"""
+
 # 获取屏幕的size
-size = driver.get_window_size()
+# size = driver.get_window_size()
 # print(size)   #{'width': 1176, 'height': 2206}  首页的宽高
               # {'width': 2328, 'height': 1128}    拍照的宽高
 
@@ -29,22 +59,24 @@ y = driver.get_window_size()["height"]
 # z = driver.swipe(x*0.5,y*0.5,x*0.5,y*0.5,duration=2000)
 # s=driver.swipe(1 / 2 * x, 1 / 2 * y, 1 / 2 * x, 1 / 3 * y, 200)#向上滑动
 # time.sleep(2)
-time.sleep(2)
+# time.sleep(2)
 # driver.swipe( x*0.15, y*0.3, x*0.15, y*0.8, 200)#向下滑动  x不变  y由小变大  美颜向下滑动
+# driver.tap([(500, 700)]) #变焦进度条
+driver.swipe( x*0.15, y*0.8, x*0.15, y*0.3, 1000)#向下滑动  x不变  y由大变小  美颜向上滑动
+time.sleep(10)
+# driver.swipe( x*0.09, y*0.8, x*0.09, y*0.3, 200)#向下滑动  x不变  y由大变小  云台向上滑动  #x= 220  700       y = 982         x =220 700   y=400
 # time.sleep(2)
 # driver.tap([(1100,265),(1150,325)],500)
 # time.sleep(2)
 # driver.swipe( x*0.96, y*0.52, x*0.96, y*0.58, 200)#向下滑动  x不变  y由小变大  拍照-录像，但是会记录上次的结果
 # driver.swipe( x*0.96, y*0.52, x*0.96, y*0.46, 200)#向上滑动  x不变  y由大变小
-time.sleep(2)
-driver.find_element_by_id("com.zhiyun.cama:id/cb_action").click()
-
-driver.find_element_by_id("com.zhiyun.cama:id/cb_action").click()
+# time.sleep(2)
 
 
 
 
-# for i in range(5):   for循环
+
+
 #     driver.swipe(1 / 2 * x, 1 / 2 * y, 1 / 2 * x, 1 / 5 * y, 200)  # 向上滑动
 #     time.sleep(2)
 # driver.tap([(500,1000),(500,613)],500)
@@ -92,3 +124,4 @@ print(swipe_up(driver))"""
     swipe_right(driver)
     swipe_up(driver)
     swipe_down(driver)"""
+

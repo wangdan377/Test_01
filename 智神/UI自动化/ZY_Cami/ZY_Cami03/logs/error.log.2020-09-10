@@ -1,0 +1,17 @@
+2020-09-10 10:31:12,503 - D:\ZY_Cami01\test_case\test_01.py[line:174] - ERROR: 'int' object is not subscriptable
+2020-09-10 15:12:45,775 - D:/ZY_Cami03/test_case/test_01.py[line:182] - ERROR: 'int' object is not subscriptable
+2020-09-10 15:13:59,825 - D:/ZY_Cami03/test_case/test_beautify.py[line:46] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-10 15:15:48,887 - D:/ZY_Cami03/test_case/test_beautify.py[line:46] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-10 15:23:40,139 - D:/ZY_Cami03/test_case/test_beautify.py[line:51] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-10 15:50:25,754 - D:/ZY_Cami03/test_case/test_beautify.py[line:52] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-10 15:52:49,238 - D:/ZY_Cami03/test_case/test_beautify.py[line:52] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-10 16:00:18,025 - D:/ZY_Cami03/test_case/test_01.py[line:204] - CRITICAL: 'int' object is not subscriptable
+2020-09-10 16:02:58,026 - D:/ZY_Cami03/test_case/test_beautify.py[line:52] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-10 16:06:23,235 - D:/ZY_Cami03/test_case/test_beautify.py[line:52] - ERROR: Message: An element could not be located on the page using the given search parameters.
+

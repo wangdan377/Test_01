@@ -2,14 +2,18 @@ from appium  import webdriver
 import time,os
 import unittest
 from test_case import test_beautify
-
+from test_case.test_beautify import Beautify_Fair
 
 
 class Video_Setting(object):
+    """视频"""
     def __init__(self):
-        self.pic = test_beautify.Beautify_Fair
+        '''self.pic = test_beautify.Beautify_Fair
         self.pic.devices(self)
-        self.pic.connecting01(self)
+        self.pic.connecting01(self)'''
+        self.couns = Beautify_Fair()  # 实例化beautify
+        self.driver = self.couns.devices()  # 启动app
+        self.driver = self.couns.connecting01()  # 连接相机
 
     def three_points(self):
         driver = self.driver
@@ -88,12 +92,12 @@ class Video_Setting(object):
         driver.find_element_by_id("com.zhiyun.cama:id/iv_back").click()   #返回按钮
         return '白平衡荧光灯'
 
-    def gesture_control01(self):
+    """def gesture_control01(self):
         driver = self.driver
         # self.slides01()
-        """x = driver.get_window_size()["width"]
+        '''x = driver.get_window_size()["width"]
         y = driver.get_window_size()["height"]
-        driver.swipe(x * 0.15, y * 0.8, x * 0.15, y * 0.3, 200)  # 向下滑动  x不变  y由大变小  美颜向上滑动"""
+        driver.swipe(x * 0.15, y * 0.8, x * 0.15, y * 0.3, 200)  # 向下滑动  x不变  y由大变小  美颜向上滑动'''
         driver.find_element_by_id("com.zhiyun.cama:id/tv_gesture").click()
         return '手势控制下拉框'
 
@@ -112,7 +116,7 @@ class Video_Setting(object):
         driver = self.driver
         driver.find_element_by_id("com.zhiyun.cama:id/cb_watermark").click()   #水印开关
         driver.find_element_by_id("com.zhiyun.cama:id/cb_watermark").click()
-        return '水印'
+        return '水印'"""
 
 if __name__ == '__main__':
     vide = Video_Setting()
@@ -132,7 +136,7 @@ if __name__ == '__main__':
     print(vide.white_balance04())
     print(vide.white_balance05())
     print(vide.white_balance06())
-    print(vide.gesture_control01())
-    print(vide.gesture_control02())
-    print(vide.gesture_control03())
-    print(vide.watermark())
+    # print(vide.gesture_control01())
+    # print(vide.gesture_control02())
+    # print(vide.gesture_control03())
+    # print(vide.watermark())

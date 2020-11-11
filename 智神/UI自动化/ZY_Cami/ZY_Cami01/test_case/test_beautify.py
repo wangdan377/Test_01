@@ -1,12 +1,16 @@
 from appium import webdriver
 import time,unittest,os,sys,HTMLTestRunner
 
+from selenium.common.exceptions import NoSuchElementException
+
+# from common.md_log import myLog
 
 class Beautify_Fair(object):
     '''美颜'''
-    def __init__(self):
+    def __init__(self,):
+        # self.driver = self.devices()    #感觉是这里的问题
+        # self.driver = 'driver'
         pass
-
     def devices(self):
 
         """desired_caps = {}
@@ -17,7 +21,7 @@ class Beautify_Fair(object):
         desired_caps['appActivity'] = '.splash.SplashActivity'  # APP启动Activity
         desired_caps['noReset'] = True  # 每次打开APP不开启重置，否则每次都进入四个欢迎页
         desired_caps['resetKeyboard'] = True  # 隐藏键盘        self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)  # 启动APP
-        self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)"""  # 启动APP
+        self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps) """ # 启动APP
         desired_caps = {'platformName': 'Android',  # 手机系统
                         'deviceName': '7HX0219918017044',
                         'noReset': True,  # 防止每次启动时软件初始化
@@ -28,7 +32,18 @@ class Beautify_Fair(object):
         self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
         desired_caps['newCommandTimeout'] = 6000
         self.driver.implicitly_wait(15)
-        return '启动app'
+        # 捕获异常，但是未成功
+        """try:
+            self.driver = self.driver
+            # myLog.logger().info("实际结果的值是:%s", self.driver)
+            print("启动成功")
+        except AssertionError as e:
+            print("启动失败")
+
+        return self.driver"""
+
+
+
     def connecting01(self):   #不连接相机/不连接设备
         driver = self.driver
         time.sleep(5)
@@ -38,9 +53,27 @@ class Beautify_Fair(object):
         driver.find_element_by_id("com.zhiyun.cama:id/enter").click()  # 不连设备,直接进入拍照
         # driver.find_element_by_id("com.zhiyun.cama:id/bt_connect").click()  #连接设备
         time.sleep(5)
-        return '不连接固件，直接进入相册'
+        """try:
+            connecti =driver.find_element_by_id("com.zhiyun.cama:id/iv_camera").click()
+            print('未连接设备,直接进入拍照')
+        except NoSuchElementException:
+                print('no connecti')
+        else:
+            connecti.click()
+        return '#不连接相机/不连接设备'"""
 
-    def beautify_01(self):     #美颜
+        """try:
+            driver.find_element_by_id("com.zhiyun.cama:id/iv_camera").click()
+            time.sleep(5)
+            print("=============")
+        except Exception as e:
+            print("连接相机失败!, 报错：", e)
+        else:
+            print("建立初始化连接成功.......")
+
+        return '#不连接相机/不连接设备'"""
+
+    """def beautify_01(self):     #美颜
         driver = self.driver
         time.sleep(5)
         driver.find_element_by_id("com.zhiyun.cama:id/iv_beauty").click()     #美颜
@@ -76,12 +109,13 @@ class Beautify_Fair(object):
         return '点击空白区域，关闭美颜'
     def beautify_03(self):     #取消美颜
         driver = self.driver
-        self.beautify_01() #美颜
-        self.slides01()  #向上滑动
+        pic.beautify_01() #美颜
+        pic.slides01()  #向上滑动
         time.sleep(2)
         driver.find_element_by_xpath(
             "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]").click()  # 取消美颜
         return '向上滑动，取消美颜'
+
     def beautify_04(self):      #瘦脸
         driver = self.driver
         self.beautify_01()     #点击美颜
@@ -127,7 +161,7 @@ class Beautify_Fair(object):
         self.blank_01()   #点击空白区域
         driver.find_element_by_id("com.zhiyun.cama:id/cb_action").click()		#拍照
         # 循环
-        """num = 0
+        '''num = 0
         for i in range(5):   
             try:
                 num = num + 1
@@ -138,17 +172,14 @@ class Beautify_Fair(object):
                     driver.find_element_by_id("com.zhiyun.cama:id/cb_action").click()
                 except:
                     num = num - 2
-                    driver.find_element_by_id("com.zhiyun.cama:id/cb_action").click()"""
-        return '点击拍照 '
-
-
-
+                    driver.find_element_by_id("com.zhiyun.cama:id/cb_action").click()'''
+        return '点击拍照 '"""
 
 if __name__ == '__main__':
     pic = Beautify_Fair()
     print(pic.devices())
     print(pic.connecting01())
-    print(pic.beautify_01())
+    """print(pic.beautify_01())
     print(pic.slides01())
     print(pic.slides02())
     print(pic.beautify_02())
@@ -161,4 +192,4 @@ if __name__ == '__main__':
     print(pic.beautify_07())
     print(pic.beautify_08())
     print(pic.beautify_09())
-    print(pic.picture_01())
+    print(pic.picture_01())"""

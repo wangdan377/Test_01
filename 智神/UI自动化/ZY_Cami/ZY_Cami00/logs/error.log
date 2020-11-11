@@ -1,0 +1,9 @@
+2020-09-10 10:31:12,503 - D:\ZY_Cami01\test_case\test_01.py[line:174] - ERROR: 'int' object is not subscriptable
+2020-09-10 15:03:05,293 - D:/ZY_Cami03/test_case/test_beautify.py[line:47] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-10 15:03:57,717 - D:/ZY_Cami03/test_case/test_beautify.py[line:46] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-10 15:06:00,032 - D:/ZY_Cami03/test_case/test_beautify.py[line:46] - ERROR: Message: An element could not be located on the page using the given search parameters.
+
+2020-09-10 15:07:55,773 - D:/ZY_Cami03/test_case/test_01.py[line:174] - ERROR: 'int' object is not subscriptable
+2020-09-10 15:10:33,514 - D:/ZY_Cami03/test_case/test_01.py[line:182] - ERROR: 'int' object is not subscriptable
